@@ -1,0 +1,26 @@
+{
+  "name": "Decorative Pro",
+  "short_name": "Decorative Pro",
+  "lang": "fa",
+  "dir": "rtl",
+  "display": "standalone",
+  "start_url": "./",
+  "background_color": "#0f172a",
+  "theme_color": "#111827",
+  "icons": [
+    {
+      "src": "app-icon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "app-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "orientation": "portrait",
+  "scope": "./"
+}

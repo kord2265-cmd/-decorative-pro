@@ -1,0 +1,542 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#111827">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="icon" type="image/svg+xml" href="app-icon.svg">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="app-icon.png">
+<title>Decorative Pro</title>
+<style>
+:root{--bg:#f4f6f8;--card:#fff;--text:#17202a;--muted:#68737d;--line:#e5e7eb;--accent:#2563eb;--danger:#dc2626;--shadow:0 8px 28px #0000000d}
+*{box-sizing:border-box}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Tahoma,sans-serif;background:var(--bg);color:var(--text)}
+button,input,select,textarea{font:inherit}button{cursor:pointer;border:0}.app{min-height:100vh}.top{position:sticky;top:0;z-index:10;background:var(--card);border-bottom:1px solid var(--line);padding:14px 16px;display:flex;align-items:center;justify-content:space-between}.brand{font-weight:800;font-size:20px}.menuBtn{width:42px;height:42px;border-radius:12px;background:#eef2ff;color:var(--accent);font-size:22px}
+main{max-width:1000px;margin:auto;padding:18px 16px 40px}.hero{background:linear-gradient(135deg,#111827,#334155);color:#fff;border-radius:24px;padding:22px;box-shadow:var(--shadow);margin-bottom:18px}.hero small{opacity:.75}.quote{margin-top:10px;font-size:15px;line-height:1.9}.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px;box-shadow:var(--shadow)}.stat b{display:block;font-size:22px;margin-top:7px}.muted{color:var(--muted);font-size:13px}.sectionTitle{display:flex;justify-content:space-between;align-items:center;margin:22px 0 12px}.actions{display:flex;gap:8px;flex-wrap:wrap}.primary{background:var(--accent);color:#fff;padding:11px 15px;border-radius:12px}.secondary{background:#eef2f7;color:var(--text);padding:11px 15px;border-radius:12px}.danger{background:#fee2e2;color:var(--danger);padding:10px 13px;border-radius:10px}.list{display:grid;gap:10px}.row{display:flex;align-items:center;justify-content:space-between;gap:12px}.badge{padding:5px 9px;border-radius:999px;background:#e0f2fe;color:#0369a1;font-size:12px}.empty{text-align:center;padding:35px 15px;color:var(--muted)}.drawer{position:fixed;inset:0;z-index:30;display:none}.drawer.open{display:block}.shade{position:absolute;inset:0;background:#0008}.panel{position:absolute;right:0;top:0;bottom:0;width:min(330px,88vw);background:var(--card);padding:20px;overflow:auto;animation:slide .18s ease}.nav{display:grid;gap:8px;margin-top:18px}.nav button{text-align:right;padding:12px 13px;border-radius:12px;background:transparent;color:var(--text)}.nav button:hover{background:#f1f5f9}.menuGroup{border:1px solid var(--line);border-radius:15px;overflow:hidden;background:color-mix(in srgb,var(--card) 92%,var(--accent) 8%)}.menuGroup summary{list-style:none;cursor:pointer;padding:13px 14px;font-weight:800;display:flex;align-items:center;justify-content:space-between}.menuGroup summary::-webkit-details-marker{display:none}.menuGroup summary:after{content:'⌄';font-size:16px;transition:.15s}.menuGroup[open] summary:after{transform:rotate(180deg)}.menuSub{display:grid;gap:4px;padding:0 7px 7px}.menuSub button{padding:10px 11px;font-size:14px}.modal{position:fixed;inset:0;background:#0008;z-index:40;display:none;align-items:center;justify-content:center;padding:16px}.modal.open{display:flex}.dialog{background:var(--card);width:min(600px,100%);max-height:90vh;overflow:auto;border-radius:22px;padding:20px}.form{display:grid;gap:12px}.field{display:grid;gap:6px}.field label{font-size:13px;color:var(--muted)}input,select,textarea{width:100%;border:1px solid var(--line);border-radius:11px;padding:11px;background:var(--card);color:var(--text)}textarea{min-height:90px;resize:vertical}.formActions{display:flex;justify-content:flex-start;gap:8px;margin-top:5px}.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#111827;color:#fff;padding:11px 16px;border-radius:12px;display:none;z-index:60}.toast.show{display:block}@keyframes slide{from{transform:translateX(20px);opacity:.5}to{transform:none;opacity:1}}
+@media(min-width:700px){.grid{grid-template-columns:repeat(4,1fr)}}
+</style>
+
+<style>
+:root{
+ --accent:#5b5cf0;--accent2:#7c3aed;--glass:rgba(255,255,255,.72);
+ --shadow2:0 18px 50px rgba(15,23,42,.10);
+}
+body{position:relative;background:
+ radial-gradient(circle at 12% 0%,rgba(91,92,240,.13),transparent 27%),
+ radial-gradient(circle at 92% 18%,rgba(124,58,237,.11),transparent 29%),
+ radial-gradient(circle at 55% 100%,rgba(37,99,235,.07),transparent 30%),var(--bg);
+ transition:background .25s,color .25s}
+.top{backdrop-filter:blur(16px);background:color-mix(in srgb,var(--card) 84%,transparent);
+ box-shadow:0 1px 0 var(--line);height:70px}
+.brand{display:flex;align-items:center;gap:10px;letter-spacing:-.4px}
+.brandLogo{width:40px;height:40px;border-radius:12px;display:block;object-fit:cover;box-shadow:0 8px 20px rgba(91,92,240,.25)}
+.menuBtn{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;
+ box-shadow:0 8px 18px rgba(91,92,240,.22);transition:.2s}
+.menuBtn:active,.primary:active,.secondary:active{transform:scale(.97)}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;opacity:.28;background-image:linear-gradient(rgba(100,116,139,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(100,116,139,.055) 1px,transparent 1px);background-size:44px 44px;mask-image:linear-gradient(to bottom,black,transparent 75%)}
+main{padding-top:24px}
+.hero{position:relative;overflow:hidden;background:linear-gradient(135deg,rgba(15,23,42,.97),rgba(49,46,129,.94) 55%,rgba(91,33,182,.92));
+ box-shadow:0 20px 55px rgba(49,46,129,.22);border:1px solid rgba(255,255,255,.08)}
+.hero:before{content:"";position:absolute;inset:0;background:linear-gradient(120deg,transparent 0 58%,rgba(255,255,255,.035) 58.2% 58.5%,transparent 58.7% 100%),linear-gradient(35deg,transparent 0 72%,rgba(255,255,255,.025) 72.2% 72.5%,transparent 72.7%);pointer-events:none}
+.hero:after{content:"";position:absolute;width:190px;height:190px;border-radius:50%;right:-70px;top:-90px;
+ background:rgba(255,255,255,.09);box-shadow:-90px 120px 0 rgba(255,255,255,.045)}
+.hero h1,.hero .quote,.hero small{position:relative;z-index:1}
+.card{box-shadow:var(--shadow2);transition:transform .18s,box-shadow .18s,border-color .18s}
+.card:hover{transform:translateY(-2px);box-shadow:0 20px 50px rgba(15,23,42,.13)}
+.stat{position:relative;overflow:hidden}
+.stat:after{content:"";position:absolute;width:70px;height:70px;border-radius:50%;left:-25px;bottom:-25px;
+ background:color-mix(in srgb,var(--accent) 9%,transparent)}
+.primary{background:linear-gradient(135deg,var(--accent),var(--accent2));box-shadow:0 8px 18px rgba(91,92,240,.18)}
+.secondary{border:1px solid var(--line);transition:.18s}
+.secondary:hover{border-color:color-mix(in srgb,var(--accent) 35%,var(--line));background:color-mix(in srgb,var(--accent) 6%,var(--card))}
+.drawer .panel{box-shadow:-20px 0 55px rgba(0,0,0,.18);animation:drawerIn .22s ease}
+.nav button{transition:.15s}
+.nav button:hover{background:color-mix(in srgb,var(--accent) 8%,var(--card));color:var(--accent);transform:translateX(-3px)}
+.badge{background:color-mix(in srgb,var(--accent) 12%,var(--card));color:var(--accent)}
+.modal{backdrop-filter:blur(4px)}
+.dialog{box-shadow:0 25px 80px rgba(0,0,0,.22);animation:pop .18s ease}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--accent);
+ box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 14%,transparent)}
+.toast{box-shadow:0 12px 35px rgba(0,0,0,.22);animation:toastIn .2s ease}
+.homeMinimal{min-height:calc(100vh - 70px);display:grid;place-items:center;position:relative;overflow:hidden;padding:30px 18px}.homeContent{text-align:center;position:relative;z-index:1;max-width:620px}.homeIcon{width:92px;height:92px;border-radius:26px;box-shadow:0 18px 45px rgba(49,46,129,.22);margin-bottom:20px}.homeKicker{font-size:14px;color:var(--muted);font-weight:700;margin-bottom:10px}.homeQuote{font-size:clamp(21px,5vw,30px);font-weight:800;line-height:1.9;letter-spacing:-.4px}.homeHint{margin-top:22px;color:var(--muted);font-size:13px}.homeGlow{position:absolute;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(91,92,240,.13),transparent 68%);filter:blur(2px)}
+
+@keyframes drawerIn{from{transform:translateX(25px);opacity:.5}to{transform:none;opacity:1}}
+@keyframes pop{from{transform:translateY(10px) scale(.98);opacity:0}to{transform:none;opacity:1}}
+@keyframes toastIn{from{transform:translate(-50%,10px);opacity:0}to{transform:translate(-50%,0);opacity:1}}
+</style>
+
+<style>
+@media print{
+ @page{size:A4;margin:0}
+ body>*:not(#modal){display:none!important}
+ #modal{display:block!important;position:static!important;background:#fff!important;padding:0!important}
+ #modal .dialog{display:block!important;width:210mm!important;min-height:297mm!important;max-height:none!important;
+   margin:0!important;border-radius:0!important;box-shadow:none!important;padding:0!important;background:#fff!important;color:#111!important}
+ #modal .dialog>#invoicePaper{display:block!important}
+ #modal .dialog>.formActions{display:none!important}
+ #invoicePaper{min-height:297mm!important;padding:16mm 15mm!important;direction:rtl!important;background:#fff!important;color:#111!important}
+ #invoicePaper *{color:#111!important}
+ .invoiceTop{display:flex!important;justify-content:space-between!important;align-items:flex-start!important}
+ .invoiceTable{width:100%!important;border-collapse:collapse!important}
+ .invoiceTable th{background:#f1f5f9!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+ .invoiceTable th,.invoiceTable td{padding:9px!important;border:1px solid #dbe1e8!important}
+}
+.invoicePaper{background:#fff;color:#111;border-radius:18px;overflow:hidden;box-shadow:0 12px 45px #00000014;direction:rtl}
+.invoiceHead{padding:26px;background:linear-gradient(135deg,#111827,#4338ca);color:#fff}
+.invoiceHead *{color:#fff}
+.invoiceTop{display:flex;justify-content:space-between;gap:20px;align-items:flex-start}
+.invoiceLogo{display:flex;gap:12px;align-items:center}
+.invoiceLogoMark{width:48px;height:48px;border-radius:15px;display:grid;place-items:center;background:#ffffff1c;font-size:24px;font-weight:900}
+.invoiceTitle{font-size:28px;font-weight:900;margin:0 0 4px}
+.invoiceMeta{background:#ffffff14;border:1px solid #ffffff22;border-radius:14px;padding:11px 14px;min-width:150px}
+.invoiceBody{padding:24px}
+.invoiceInfo{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:22px}
+.infoBox{border:1px solid #e5e7eb;border-radius:14px;padding:14px}
+.infoBox small{display:block;color:#64748b;margin-bottom:5px}
+.invoiceTable{width:100%;border-collapse:separate;border-spacing:0;overflow:hidden;border:1px solid #e5e7eb;border-radius:14px}
+.invoiceTable th{background:#f1f5f9;padding:11px;text-align:right}
+.invoiceTable td{padding:11px;border-top:1px solid #e5e7eb}
+.invoiceTable th:not(:last-child),.invoiceTable td:not(:last-child){border-left:1px solid #e5e7eb}
+.invoiceTotals{margin-top:18px;display:flex;justify-content:flex-start}
+.totalBox{width:min(330px,100%);border:1px solid #e5e7eb;border-radius:16px;padding:15px}
+.totalRow{display:flex;justify-content:space-between;padding:7px 0;color:#475569}
+.totalFinal{margin-top:7px;padding-top:12px;border-top:2px solid #111827;display:flex;justify-content:space-between;font-size:18px;font-weight:900}
+.invoiceFooter{margin-top:35px;padding-top:15px;border-top:1px dashed #cbd5e1;color:#64748b;font-size:12px;display:flex;justify-content:space-between;gap:15px}
+.invoiceItem input{direction:rtl}
+</style>
+</head>
+<body>
+<div class="app">
+<header class="top"><div class="brand"><img class="brandLogo" src="app-icon.svg" alt="Decorative Pro"><span>Decorative Pro</span></div><button class="menuBtn" onclick="openDrawer()">☰</button></header>
+<main id="view"></main>
+</div>
+
+<div class="drawer" id="drawer" onclick="if(event.target===this||event.target.classList.contains('shade'))closeDrawer()">
+<div class="shade"></div><aside class="panel">
+<div class="row"><h2 style="margin:0">منوی برنامه</h2><button class="secondary" onclick="closeDrawer()">✕</button></div>
+<div class="nav">
+<button onclick="show('home')">🏠 داشبورد</button>
+<button onclick="show('customers')">👥 مشتریان</button>
+<button onclick="show('projects')">🏗️ پروژه‌ها</button>
+<button onclick="show('receipts')">💰 دریافتی‌ها</button>
+<button onclick="show('invoices')">🧾 فاکتورها</button>
+<button onclick="show('accounts')">🏦 حساب‌ها و کارت‌ها</button>
+<button onclick="show('reports')">📊 گزارش‌ها</button>
+<button onclick="show('backup')">💾 پشتیبان‌گیری</button>
+<button onclick="show('settings')">⚙️ تنظیمات</button>
+</div></aside></div>
+
+<div class="modal" id="modal"><div class="dialog" id="dialog"></div></div>
+<div class="toast" id="toast"></div>
+
+<script>
+const KEY='decorative_pro_v1';
+const DEFAULT_DB={customers:[],projects:[],receipts:[],invoices:[],accounts:[],settings:{business:'Decorative',theme:'light',accent:'#5b5cf0'}};
+let db=(()=>{try{const raw=window.electronStore?.load?.(); if(raw){return JSON.parse(raw)} const legacy=localStorage.getItem(KEY); if(legacy){window.electronStore?.save?.(legacy); return JSON.parse(legacy)} return DEFAULT_DB}catch(e){return DEFAULT_DB}})();
+const quotes=['هر دریافتی کوچک، یک قدم به هدف بزرگ‌تر است.','نظم مالی یعنی آرامش بیشتر در کسب‌وکار.','امروز ثبت کن، فردا دقیق‌تر تصمیم بگیر.','پول را مدیریت کن تا پول تو را مدیریت نکند.','رشد واقعی از تصمیم‌های کوچک و منظم شروع می‌شود.'];
+function save(){const raw=JSON.stringify(db); if(window.electronStore?.save) window.electronStore.save(raw); else localStorage.setItem(KEY,raw);}
+function money(n){return new Intl.NumberFormat('fa-IR').format(Number(n)||0)+' تومان'}
+function toast(t){let x=document.getElementById('toast');x.textContent=t;x.classList.add('show');setTimeout(()=>x.classList.remove('show'),1800)}
+function openDrawer(){document.getElementById('drawer').classList.add('open')}
+function closeDrawer(){document.getElementById('drawer').classList.remove('open')}
+function modal(content){document.getElementById('dialog').innerHTML=content;document.getElementById('modal').classList.add('open')}
+function closeModal(){document.getElementById('modal').classList.remove('open')}
+function show(page){
+ closeDrawer(); let v=document.getElementById('view');
+ if(page==='home')return home();
+ if(page==='customers')return customers();
+ if(page==='projects')return projects();
+ if(page==='receipts')return receipts();
+ if(page==='invoices')return invoices();
+ if(page==='accounts')return accounts();
+ if(page==='reports')return reports();
+ if(page==='backup')return backup();
+ if(page==='settings')return settings();
+}
+function home(){
+ let total=db.receipts.reduce((a,x)=>a+Number(x.amount||0),0), active=db.projects.filter(x=>x.status!=='تکمیل‌شده').length;
+ let contracts=db.projects.reduce((a,x)=>a+Number(x.amount||0),0), remaining=Math.max(contracts-total,0);
+ document.getElementById('view').innerHTML=`<section class="hero"><small>مدیریت هوشمند کسب‌وکار</small><h1 style="margin:8px 0">سلام 👋</h1><div class="quote">«${quotes[new Date().getDate()%quotes.length]}»</div></section>
+ <div class="grid"><div class="card stat">👥 مشتریان<b>${db.customers.length.toLocaleString('fa-IR')}</b><span class="muted">پرونده ثبت‌شده</span></div>
+ <div class="card stat">🏗️ پروژه‌ها<b>${active.toLocaleString('fa-IR')}</b><span class="muted">پروژه فعال</span></div>
+ <div class="card stat">💰 دریافتی<b>${money(total)}</b><span class="muted">مجموع ثبت‌شده</span></div>
+ <div class="card stat">📌 مانده قراردادها<b>${money(remaining)}</b><span class="muted">مبلغ قابل دریافت</span></div>
+ <div class="card stat">🧾 فاکتورها<b>${db.invoices.length.toLocaleString('fa-IR')}</b><span class="muted">فاکتور ثبت‌شده</span></div></div>
+ <div class="sectionTitle"><h3>دسترسی سریع</h3></div><div class="actions">
+ <button class="primary" onclick="newCustomer()">+ مشتری جدید</button><button class="secondary" onclick="newProject()">+ پروژه جدید</button><button class="secondary" onclick="newReceipt()">+ دریافتی جدید</button><button class="secondary" onclick="newInvoice()">+ فاکتور جدید</button></div>`;
+}
+function customers(){
+ let items=db.customers.map((c,i)=>{
+ let contract=db.projects.filter(x=>x.customer===c.name).reduce((a,x)=>a+Number(x.amount||0),0);
+ let received=db.receipts.filter(x=>x.customer===c.name).reduce((a,x)=>a+Number(x.amount||0),0);
+ let remain=Math.max(contract-received,0);
+ let status=contract===0?'بدون قرارداد':remain===0?'تسویه شده':'بدهکار';
+ return `<div class="card"><div class="row"><div><b>${esc(c.name)}</b><div class="muted">${esc(c.phone||'بدون شماره')}</div></div><span class="badge">${status}</span></div>
+ <div class="grid" style="margin-top:12px"><div><span class="muted">قرارداد</span><br><b>${money(contract)}</b></div><div><span class="muted">دریافتی</span><br><b>${money(received)}</b></div><div><span class="muted">مانده</span><br><b>${money(remain)}</b></div></div>
+ <div class="actions" style="margin-top:12px">
+<button class="secondary" onclick="customerFinance(${i})">پرونده مالی</button>
+${c.phone?`<a class="secondary" style="text-decoration:none" href="tel:${esc(c.phone)}">📞 تماس</a>`:''}
+${c.phone?`<a class="secondary" style="text-decoration:none" target="_blank" href="https://wa.me/${String(c.phone).replace(/[^0-9+]/g,'').replace(/^0/,'98')}">💬 واتساپ</a>`:''}
+${c.address?`<a class="secondary" style="text-decoration:none" target="_blank" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(c.address)}">📍 مسیریابی</a>`:''}
+<button class="secondary" onclick="editCustomer(${i})">ویرایش</button><button class="danger" onclick="del('customers',${i},'مشتری')">حذف</button></div></div>`}).join('');
+ document.getElementById('view').innerHTML=`<div class="sectionTitle"><h2>👥 مشتریان</h2><button class="primary" onclick="newCustomer()">+ مشتری</button></div>
+<div class="card" style="margin-bottom:12px">
+<div class="field"><label>جستجوی مشتری</label><input id="customerSearch" placeholder="نام یا شماره تماس..." oninput="filterCustomers()"></div>
+<div class="actions" style="margin-top:10px">
+<button class="secondary" onclick="setCustomerFilter('all')">همه</button>
+<button class="secondary" onclick="setCustomerFilter('debt')">بدهکار</button>
+<button class="secondary" onclick="setCustomerFilter('settled')">تسویه‌شده</button>
+</div></div>
+<div id="customerList" class="list">${items||'<div class="empty">هنوز مشتری ثبت نشده است.</div>'}</div>`;
+}
+let customerFilter='all';
+function setCustomerFilter(v){customerFilter=v;filterCustomers()}
+function filterCustomers(){
+ const q=(document.getElementById('customerSearch')?.value||'').trim().toLowerCase();
+ const list=document.getElementById('customerList'); if(!list)return;
+ const cards=[...list.children];
+ db.customers.forEach((c,i)=>{
+   let contract=db.projects.filter(x=>x.customer===c.name).reduce((a,x)=>a+Number(x.amount||0),0);
+   let received=db.receipts.filter(x=>x.customer===c.name).reduce((a,x)=>a+Number(x.amount||0),0);
+   let status=contract>0 && contract===received?'settled':contract>received?'debt':'all';
+   const hay=(c.name+' '+(c.phone||'')).toLowerCase();
+   const okQ=!q||hay.includes(q);
+   const okF=customerFilter==='all'||status===customerFilter;
+   if(cards[i]) cards[i].style.display=(okQ&&okF)?'':'none';
+ });
+}
+function newCustomer(i=null){
+ let c=i==null?{name:'',phone:'',address:'',notes:''}:db.customers[i];
+ modal(`<h2>${i==null?'مشتری جدید':'ویرایش مشتری'}</h2><form class="form" onsubmit="saveCustomer(event,${i})">
+ <div class="field"><label>نام مشتری *</label><input id="f_name" required value="${esc(c.name)}"></div><div class="field"><label>شماره تماس</label><input id="f_phone" inputmode="tel" value="${esc(c.phone)}"></div><div class="field"><label>آدرس</label><textarea id="f_address">${esc(c.address)}</textarea></div><div class="field"><label>توضیحات</label><textarea id="f_notes">${esc(c.notes)}</textarea></div>
+ <div class="formActions"><button class="primary">ذخیره</button><button type="button" class="secondary" onclick="closeModal()">انصراف</button></div></form>`);
+}
+function customerFinance(i){
+ let c=db.customers[i];
+ let projects=db.projects.filter(x=>x.customer===c.name);
+ let receipts=db.receipts.filter(x=>x.customer===c.name);
+ let contract=projects.reduce((a,x)=>a+Number(x.amount||0),0);
+ let received=receipts.reduce((a,x)=>a+Number(x.amount||0),0);
+ let remain=Math.max(contract-received,0);
+ modal(`<h2>پرونده مالی — ${esc(c.name)}</h2>
+ <div class="grid"><div class="card"><span class="muted">مبلغ قرارداد</span><b>${money(contract)}</b></div>
+ <div class="card"><span class="muted">مجموع دریافتی</span><b>${money(received)}</b></div>
+ <div class="card"><span class="muted">مانده</span><b>${money(remain)}</b></div></div>
+ <h3>پروژه‌ها</h3><div class="list">${projects.map(x=>`<div class="card"><div class="row"><b>${esc(x.name)}</b><span>${money(x.amount)}</span></div></div>`).join('')||'<div class="empty">پروژه‌ای ثبت نشده است.</div>'}</div>
+ <h3>دریافتی‌ها</h3><div class="list">${receipts.map(x=>`<div class="card"><div class="row"><span>${x.date||''} · ${esc(x.method||'')}</span><b>${money(x.amount)}</b></div></div>`).join('')||'<div class="empty">دریافتی‌ای ثبت نشده است.</div>'}</div><h3>📜 تاریخچه</h3><div class="list">
+${projects.map(x=>`<div class="card"><div class="row"><span>🏗️ پروژه: ${esc(x.name)}</span><span>${x.status||''}</span></div></div>`).join('')}
+${receipts.map(x=>`<div class="card"><div class="row"><span>💰 دریافت در ${x.date||'-'}</span><b>${money(x.amount)}</b></div></div>`).join('')}
+${!projects.length&&!receipts.length?'<div class="empty">هنوز فعالیتی ثبت نشده است.</div>':''}</div>
+ <div class="formActions" style="margin-top:15px">
+<button class="primary" onclick="closeModal();newReceipt('${esc(c.name)}')">+ ثبت دریافتی</button>
+<button class="secondary" onclick="closeModal();newInvoiceForCustomer('${esc(c.name)}')">🧾 فاکتور</button>
+${c.phone?`<a class="secondary" style="text-decoration:none" href="tel:${esc(c.phone)}">📞 تماس</a>`:''}
+${c.address?`<a class="secondary" style="text-decoration:none" target="_blank" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(c.address)}">📍 مسیر</a>`:''}
+<button class="secondary" onclick="closeModal()">بستن</button></div>`);
+}
+function editCustomer(i){newCustomer(i)}
+function saveCustomer(e,i){e.preventDefault();let x={name:f_name.value,phone:f_phone.value,address:f_address.value,notes:f_notes.value,received:i<0?0:(db.customers[i].received||0)};if(i==null||i<0)db.customers.push(x);else db.customers[i]=x;save();closeModal();customers();toast('مشتری ذخیره شد')}
+function projects(){
+ let items=db.projects.map((p,i)=>`<div class="card"><div class="row"><div><b>${esc(p.name)}</b><div class="muted">${esc(p.customer||'بدون مشتری')} · ${money(p.amount)}</div></div><span class="badge">${esc(p.status)}</span></div><div class="actions" style="margin-top:10px"><button class="secondary" onclick="editProject(${i})">ویرایش</button><button class="danger" onclick="del('projects',${i},'پروژه')">حذف</button></div></div>`).join('');
+ document.getElementById('view').innerHTML=`<div class="sectionTitle"><h2>🏗️ پروژه‌ها</h2><button class="primary" onclick="newProject()">+ پروژه</button></div><div class="list">${items||'<div class="empty">هنوز پروژه‌ای ثبت نشده است.</div>'}</div>`;
+}
+function newProject(i=null){let p=i==null?{name:'',customer:'',amount:0,status:'فعال',start:'',delivery:'',notes:''}:db.projects[i];
+modal(`<h2>${i==null?'پروژه جدید':'ویرایش پروژه'}</h2><form class="form" onsubmit="saveProject(event,${i})"><div class="field"><label>نام پروژه *</label><input id="p_name" required value="${esc(p.name)}"></div><div class="field"><label>مشتری</label><input id="p_customer" value="${esc(p.customer)}"></div><div class="field"><label>مبلغ پروژه</label><input id="p_amount" inputmode="numeric" value="${p.amount||0}"></div><div class="field"><label>وضعیت</label><select id="p_status"><option>فعال</option><option>در انتظار</option><option>تکمیل‌شده</option></select></div><div class="field"><label>تاریخ شروع</label><input id="p_start" type="date" value="${p.start||''}"></div><div class="field"><label>تاریخ تحویل</label><input id="p_delivery" type="date" value="${p.delivery||''}"></div><div class="field"><label>توضیحات</label><textarea id="p_notes">${esc(p.notes)}</textarea></div><div class="formActions"><button class="primary">ذخیره</button><button type="button" class="secondary" onclick="closeModal()">انصراف</button></div></form>`);p_status.value=p.status}
+function editProject(i){newProject(i)}
+function saveProject(e,i){e.preventDefault();let x={name:p_name.value,customer:p_customer.value,amount:Number(p_amount.value.replace(/,/g,''))||0,status:p_status.value,start:p_start.value,delivery:p_delivery.value,notes:p_notes.value};if(i==null||i<0)db.projects.push(x);else db.projects[i]=x;save();closeModal();projects();toast('پروژه ذخیره شد')}
+function receipts(){
+ let items=db.receipts.map((r,i)=>`<div class="card"><div class="row"><div><b>${esc(r.customer||'دریافت')}</b><div class="muted">${r.date||''} · ${esc(r.method||'')}</div></div><b>${money(r.amount)}</b></div><div class="actions" style="margin-top:10px"><button class="danger" onclick="del('receipts',${i},'دریافتی')">حذف</button></div></div>`).join('');
+ document.getElementById('view').innerHTML=`<div class="sectionTitle"><h2>💰 دریافتی‌ها</h2><button class="primary" onclick="newReceipt()">+ دریافتی</button></div><div class="list">${items||'<div class="empty">هنوز دریافتی ثبت نشده است.</div>'}</div>`;
+}
+function newReceipt(customerName=''){modal(`<h2>دریافتی جدید</h2><form class="form" onsubmit="saveReceipt(event)"><div class="field"><label>مشتری</label><input id="r_customer" value="${esc(customerName)}"></div><div class="field"><label>مبلغ دریافتی *</label><input id="r_amount" required inputmode="numeric"></div><div class="field"><label>تاریخ دریافت</label><input id="r_date" type="date" value="${new Date().toISOString().slice(0,10)}"></div><div class="field"><label>روش دریافت</label><select id="r_method"><option>کارت</option><option>حساب بانکی</option><option>نقدی</option><option>سایر</option></select></div><div class="field"><label>توضیحات</label><textarea id="r_notes"></textarea></div><div class="formActions"><button class="primary">ثبت دریافتی</button><button type="button" class="secondary" onclick="closeModal()">انصراف</button></div></form>`)}
+function saveReceipt(e){e.preventDefault();db.receipts.push({customer:r_customer.value,amount:Number(r_amount.value.replace(/,/g,''))||0,date:r_date.value,method:r_method.value,notes:r_notes.value});save();closeModal();receipts();toast('دریافتی ثبت شد')}
+function invoices(){
+ document.getElementById('view').innerHTML=`<div class="sectionTitle"><h2>🧾 فاکتورها</h2><button class="primary" onclick="newInvoice()">+ فاکتور</button></div>
+ <div class="card" style="margin-bottom:12px"><div class="field"><label>جستجوی فاکتور</label><input id="invoiceSearch" placeholder="نام مشتری یا شماره فاکتور..." oninput="filterInvoices()"></div></div>
+ <div id="invoiceList" class="list">${db.invoices.map((x,i)=>invoiceCard(x,i)).join('')||'<div class="empty">هنوز فاکتوری ثبت نشده است.</div>'}</div>`;
+}
+function invoiceCard(x,i){
+ return `<div class="card invoiceCard" data-search="${esc((x.customer||'')+' '+(x.number||''))}">
+ <div class="row"><div><b>${esc(x.customer||'بدون مشتری')}</b><div class="muted">${esc(x.number||'')} · ${x.date||''}</div></div><b>${money(x.total)}</b></div>
+ <div class="actions" style="margin-top:10px"><button class="primary" onclick="previewInvoice(${i})">👁 پیش‌نمایش</button><button class="secondary" onclick="editInvoice(${i})">ویرایش</button><button class="danger" onclick="del('invoices',${i},'فاکتور')">حذف</button></div></div>`;
+}
+function filterInvoices(){
+ const q=(document.getElementById('invoiceSearch')?.value||'').trim().toLowerCase();
+ document.querySelectorAll('.invoiceCard').forEach(el=>el.style.display=el.dataset.search.toLowerCase().includes(q)?'':'none');
+}
+function newInvoiceForCustomer(name){newInvoice();setTimeout(()=>{if(document.getElementById('i_customer'))document.getElementById('i_customer').value=name},0)}
+function newInvoice(existingIndex=null, customerName=''){
+ let x=existingIndex==null?{customer:customerName,number:'INV-'+Date.now().toString().slice(-6),items:[{desc:'',qty:1,price:0}],discount:0,card:''}:db.invoices[existingIndex];
+ modal(`<h2>${existingIndex==null?'🧾 فاکتور جدید':'✏️ ویرایش فاکتور'}</h2>
+ <form class="form" onsubmit="saveInvoice(event,${existingIndex})">
+ <div class="field"><label>مشتری *</label><input id="i_customer" required value="${esc(x.customer||'')}"></div>
+ <div class="field"><label>شماره فاکتور</label><input id="i_number" value="${esc(x.number||'')}"></div>
+ <div class="field"><label>اقلام فاکتور</label><div id="itemsBox"></div>
+ <button type="button" class="secondary" onclick="addInvoiceItem()">+ افزودن قلم</button></div>
+ <div class="field"><label>تخفیف</label><input id="i_discount" inputmode="numeric" value="${x.discount||0}"></div>
+ <div class="field"><label>شماره کارت / حساب</label><input id="i_card" value="${esc(x.card||'')}"></div>
+ <div class="formActions"><button class="primary">${existingIndex==null?'ذخیره فاکتور':'ذخیره تغییرات'}</button><button type="button" class="secondary" onclick="closeModal()">انصراف</button></div>
+ </form>`);
+ (x.items&&x.items.length?x.items:[{desc:'',qty:1,price:0}]).forEach(it=>addInvoiceItem(it.desc,it.qty,it.price));
+}
+function newInvoiceForCustomer(name){newInvoice(null,name)}
+function editInvoice(i){newInvoice(i)}
+function addInvoiceItem(desc='',qty=1,price=0){
+ let box=document.getElementById('itemsBox'); if(!box)return;
+ let row=document.createElement('div'); row.className='card invoiceItem'; row.style.marginBottom='8px';
+ row.innerHTML=`<div class="field"><label>شرح خدمت / کالا</label><input class="itDesc" value="${esc(desc)}"></div>
+ <div class="grid" style="margin-top:8px"><div class="field"><label>تعداد</label><input class="itQty" type="number" min="0.01" step="0.01" value="${qty}"></div>
+ <div class="field"><label>قیمت واحد</label><input class="itPrice" inputmode="numeric" value="${price}"></div></div>
+ <button type="button" class="danger" style="margin-top:8px" onclick="this.parentElement.remove()">حذف قلم</button>`;
+ box.appendChild(row);
+}
+function num(v){return Number(String(v||'').replace(/[,\u066C\u066B]/g,'').replace(/[۰-۹]/g,d=>'۰۱۲۳۴۵۶۷۸۹'.indexOf(d)))||0}
+function saveInvoice(e,i){
+ e.preventDefault();
+ let items=[...document.querySelectorAll('.invoiceItem')].map(r=>({desc:r.querySelector('.itDesc').value.trim(),qty:num(r.querySelector('.itQty').value),price:num(r.querySelector('.itPrice').value)})).filter(x=>x.desc&&x.qty>0&&x.price>=0);
+ if(!items.length){toast('حداقل یک قلم معتبر وارد کنید');return}
+ let subtotal=items.reduce((a,x)=>a+x.qty*x.price,0);
+ let discount=Math.max(num(i_discount.value),0);
+ if(discount>subtotal)discount=subtotal;
+ let data={customer:i_customer.value.trim(),number:i_number.value.trim()||'INV-'+Date.now().toString().slice(-6),items,subtotal,discount,total:subtotal-discount,card:i_card.value.trim(),date:(i==null?new Date().toLocaleDateString('fa-IR'):(db.invoices[i].date||new Date().toLocaleDateString('fa-IR')))};
+ if(i==null)db.invoices.push(data);else db.invoices[i]=data;
+ save();closeModal();invoices();toast(i==null?'فاکتور ذخیره شد':'فاکتور ویرایش شد');
+}
+function previewInvoice(i){
+ let x=db.invoices[i], rows=(x.items||[]).map((it,n)=>`<tr><td>${n+1}</td><td>${esc(it.desc)}</td><td>${it.qty}</td><td>${money(it.price)}</td><td>${money(it.qty*it.price)}</td></tr>`).join('');
+ modal(`<div id="invoicePaper" class="invoicePaper">
+ <div class="invoiceHead"><div class="invoiceTop">
+ <div class="invoiceLogo"><div class="invoiceLogoMark">D</div><div><div class="invoiceTitle">فاکتور فروش</div><div>Decorative</div></div></div>
+ <div class="invoiceMeta"><div>شماره فاکتور</div><b>${esc(x.number||'-')}</b><div style="margin-top:6px">تاریخ: ${esc(x.date||'-')}</div></div>
+ </div></div>
+ <div class="invoiceBody">
+ <div class="invoiceInfo"><div class="infoBox"><small>صورتحساب برای</small><b>${esc(x.customer||'-')}</b></div><div class="infoBox"><small>روش پرداخت / حساب</small><b>${esc(x.card||'-')}</b></div></div>
+ <table class="invoiceTable"><thead><tr><th>#</th><th>شرح کالا / خدمت</th><th>تعداد</th><th>قیمت واحد</th><th>مبلغ</th></tr></thead><tbody>${rows}</tbody></table>
+ <div class="invoiceTotals"><div class="totalBox"><div class="totalRow"><span>جمع کل</span><b>${money(x.subtotal||0)}</b></div><div class="totalRow"><span>تخفیف</span><b>${money(x.discount||0)}</b></div><div class="totalFinal"><span>مبلغ قابل پرداخت</span><span>${money(x.total||0)}</span></div></div></div>
+ <div class="invoiceFooter"><span>از اعتماد شما سپاسگزاریم.</span><span>Decorative · فاکتور رسمی داخلی</span></div>
+ </div></div>
+ <div class="formActions" style="margin-top:14px"><button class="primary" onclick="window.print()">🖨️ چاپ / ذخیره PDF</button><button class="secondary" onclick="editInvoice(${i});">✏️ ویرایش</button><button class="secondary" onclick="closeModal()">بستن</button></div>`);
+}
+function accounts(){document.getElementById('view').innerHTML=`<div class="sectionTitle"><h2>🏦 حساب‌ها و کارت‌ها</h2><button class="primary" onclick="newAccount()">+ حساب</button></div><div class="list">${db.accounts.map((x,i)=>`<div class="card"><div class="row"><div><b>${esc(x.title)}</b><div class="muted">${esc(x.number||'')}</div></div><button class="danger" onclick="del('accounts',${i},'حساب')">حذف</button></div></div>`).join('')||'<div class="empty">هنوز حسابی ثبت نشده است.</div>'}</div>`}
+function newAccount(){modal(`<h2>حساب / کارت جدید</h2><form class="form" onsubmit="saveAccount(event)"><div class="field"><label>عنوان</label><input id="a_title" required placeholder="مثلاً کارت اصلی"></div><div class="field"><label>شماره کارت / حساب / شبا</label><input id="a_number"></div><div class="formActions"><button class="primary">ذخیره</button><button type="button" class="secondary" onclick="closeModal()">انصراف</button></div></form>`)}
+function saveAccount(e){e.preventDefault();db.accounts.push({title:a_title.value,number:a_number.value});save();closeModal();accounts();toast('حساب ذخیره شد')}
+function reports(){let rec=db.receipts.reduce((a,x)=>a+Number(x.amount||0),0),inv=db.invoices.reduce((a,x)=>a+Number(x.total||0),0);document.getElementById('view').innerHTML=`<div class="sectionTitle"><h2>📊 گزارش‌ها</h2></div><div class="grid"><div class="card stat">مجموع دریافتی<b>${money(rec)}</b></div><div class="card stat">مجموع فاکتورها<b>${money(inv)}</b></div><div class="card stat">تعداد مشتری<b>${db.customers.length}</b></div><div class="card stat">تعداد پروژه<b>${db.projects.length}</b></div></div>`}
+function backup(){document.getElementById('view').innerHTML=`<div class="sectionTitle"><h2>💾 پشتیبان‌گیری</h2></div><div class="card"><p>اطلاعات برنامه داخل دیتابیس محلی خود برنامه ذخیره می‌شود و به مرورگر وابسته نیست.</p><div class="actions"><button class="primary" onclick="exportData()">خروجی پشتیبان</button><button class="secondary" onclick="importData()">بازیابی پشتیبان</button></div></div>`}
+async function exportData(){const raw=JSON.stringify(db,null,2);if(window.electronStore?.backup){const ok=await window.electronStore.backup(raw);if(ok)toast('فایل پشتیبان ذخیره شد');return}const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([raw],{type:'application/json'}));a.download='decorative-pro-backup.json';a.click();toast('فایل پشتیبان ساخته شد')}
+async function importData(e){if(window.electronStore?.restore){const raw=await window.electronStore.restore();if(!raw)return;try{const x=JSON.parse(raw);if(!x.customers||!x.projects)throw 0;db=x;save();show('home');toast('بازیابی انجام شد')}catch{toast('فایل پشتیبان معتبر نیست')}return}if(!e)return;let f=e.target.files[0];if(!f)return;let r=new FileReader();r.onload=()=>{try{let x=JSON.parse(r.result);if(!x.customers||!x.projects)throw 0;db=x;save();show('home');toast('بازیابی انجام شد')}catch{toast('فایل پشتیبان معتبر نیست')}};r.readAsText(f)}
+function settings(){document.getElementById('view').innerHTML=`<div class="sectionTitle"><h2>⚙️ تنظیمات</h2></div><div class="card"><div class="field"><label>نام کسب‌وکار</label><input id="biz" value="${esc(db.settings.business)}"></div><div class="field" style="margin-top:12px"><label>تم</label><select id="theme"><option value="light">روشن</option><option value="dark">تاریک</option></select></div>
+<div class="field" style="margin-top:12px"><label>رنگ اصلی</label><select id="accent"><option value="#5b5cf0">بنفش</option><option value="#2563eb">آبی</option><option value="#059669">سبز</option><option value="#dc2626">قرمز</option><option value="#d97706">نارنجی</option></select></div><div class="actions" style="margin-top:14px"><button class="primary" onclick="saveSettings()">ذخیره تنظیمات</button></div></div>`;theme.value=db.settings.theme;accent.value=db.settings.accent||'#5b5cf0'}
+function saveSettings(){db.settings.business=biz.value;db.settings.theme=theme.value;db.settings.accent=accent.value;save();applyTheme();toast('تنظیمات ذخیره شد')}
+function applyTheme(){let dark=db.settings.theme==='dark';document.documentElement.style.setProperty('--bg',dark?'#0f172a':'#f4f6f8');document.documentElement.style.setProperty('--card',dark?'#111827':'#fff');document.documentElement.style.setProperty('--text',dark?'#f8fafc':'#17202a');document.documentElement.style.setProperty('--muted',dark?'#94a3b8':'#68737d');document.documentElement.style.setProperty('--line',dark?'#263244':'#e5e7eb');document.documentElement.style.setProperty('--accent',db.settings.accent||'#5b5cf0')}
+function del(k,i,label){if(confirm('حذف شود؟')){db[k].splice(i,1);save();show(k==='customers'?'customers':k==='projects'?'projects':k==='receipts'?'receipts':k==='invoices'?'invoices':'accounts');toast(label+' حذف شد')}}
+function esc(s){return String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
+applyTheme();
+</script>
+
+<!-- Decorative Pro v6 unified upgrade -->
+<style>
+.brand:before{content:'✦';font-size:21px}
+.moneyInput{text-align:left;direction:ltr;font-variant-numeric:tabular-nums}
+.serviceRows{display:grid;gap:10px}.serviceRow{display:grid;grid-template-columns:1fr 150px 42px;gap:8px;align-items:end}.serviceRow .danger{height:44px}
+.docPaper{background:#fff;color:#111;border-radius:18px;overflow:hidden;box-shadow:0 12px 45px #00000014;direction:rtl}.docHead{padding:26px;background:linear-gradient(135deg,#111827,#4f46e5);color:#fff}.docHead *{color:#fff}.docTitle{font-size:27px;font-weight:900}.docBody{padding:24px}.docGrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.docBox{border:1px solid #e5e7eb;border-radius:14px;padding:14px}.docBox small{display:block;color:#64748b;margin-bottom:5px}.docTable{width:100%;border-collapse:collapse;margin-top:20px}.docTable th,.docTable td{padding:10px;border:1px solid #dbe1e8}.docTable th{background:#f1f5f9}.docTotal{margin-top:18px;margin-right:auto;width:min(350px,100%);border:1px solid #e5e7eb;border-radius:15px;padding:15px}.docTotal .final{border-top:2px solid #111827;margin-top:8px;padding-top:10px;font-size:19px;font-weight:900}.docFoot{margin-top:35px;padding-top:15px;border-top:1px dashed #cbd5e1;color:#64748b;font-size:12px;display:flex;justify-content:space-between}.signatureGrid{display:grid;grid-template-columns:1fr 1fr;gap:35px;margin-top:45px}.signature{height:75px;border-bottom:1px solid #cbd5e1;text-align:center;padding-top:48px;color:#64748b}
+@media(max-width:600px){.serviceRow{grid-template-columns:1fr 120px 42px}.docGrid{grid-template-columns:1fr}.docBody{padding:16px}.docHead{padding:20px}.docTable{font-size:12px}}
+@media print{#modal .dialog>#docPrint{display:block!important}#docPrint{min-height:297mm!important;color:#111!important;background:#fff!important}#docPrint *{color:#111!important}.noPrint{display:none!important}.docHead{-webkit-print-color-adjust:exact;print-color-adjust:exact}.docTable th{background:#f1f5f9!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+</style>
+<script>
+// v6 data migration
+if(!Array.isArray(db.preInvoices))db.preInvoices=[];
+if(!Array.isArray(db.contracts))db.contracts=[];
+if(!Array.isArray(db.receipts))db.receipts=[];
+if(!Array.isArray(db.invoices))db.invoices=[];
+if(!Array.isArray(db.accounts))db.accounts=[];
+save();
+
+function money(n){return new Intl.NumberFormat('en-US').format(num(n))+' تومان'}
+function persianMoney(n){return new Intl.NumberFormat('fa-IR').format(num(n))+' تومان'}
+function formatAmountValue(v){let n=String(v??'').replace(/[^0-9۰-۹]/g,''); n=n.replace(/[۰-۹]/g,d=>'۰۱۲۳۴۵۶۷۸۹'.indexOf(d)); if(!n)return ''; return new Intl.NumberFormat('en-US').format(Number(n))}
+function attachMoneyInputs(root=document){root.querySelectorAll('input.moneyInput,input[data-money]').forEach(el=>{el.value=formatAmountValue(el.value);el.addEventListener('input',()=>{let pos=el.selectionStart;let before=el.value.slice(0,pos).replace(/[^0-9۰-۹]/g,'').length;el.value=formatAmountValue(el.value);let digits=el.value.replace(/[^0-9]/g,'');let target=el.value.length;let count=0;for(let i=0;i<el.value.length;i++){if(/[0-9]/.test(el.value[i]))count++;if(count>=before){target=i+1;break}}try{el.setSelectionRange(target,target)}catch{}})})}
+function isoToFa(v){if(!v)return '-';let d=new Date(v+'T00:00:00');return new Intl.DateTimeFormat('fa-IR',{year:'numeric',month:'2-digit',day:'2-digit'}).format(d)}
+function amountToWords(n){n=num(n); if(!n)return 'صفر تومان'; const u=['','یک','دو','سه','چهار','پنج','شش','هفت','هشت','نه','ده','یازده','دوازده','سیزده','چهارده','پانزده','شانزده','هفده','هجده','نوزده']; const tens=['','','بیست','سی','چهل','پنجاه','شصت','هفتاد','هشتاد','نود']; const hund=['','صد','دویست','سیصد','چهارصد','پانصد','ششصد','هفتصد','هشتصد','نهصد']; const scales=['','هزار','میلیون','میلیارد','تریلیون']; function chunk(x){let a=[];if(x>=100){a.push(hund[Math.floor(x/100)]);x%=100;if(x)a.push('و')}if(x>=20){a.push(tens[Math.floor(x/10)]);x%=10;if(x)a.push('و')}if(x>0&&x<20)a.push(u[x]);return a.join(' ')}let parts=[];let i=0;while(n>0){let c=n%1000;if(c){let t=chunk(c);if(scales[i])t+=' '+scales[i];parts.unshift(t)}n=Math.floor(n/1000);i++}return parts.join(' و ')+' تومان'}
+function addMoneyMask(id){let el=document.getElementById(id);if(el){el.classList.add('moneyInput');el.dataset.money='1';attachMoneyInputs(el.parentElement||document)}}
+
+function home(){document.getElementById('view').innerHTML=`<section class="homeMinimal"><div class="homeGlow"></div><div class="homeContent"><img src="app-icon.svg" alt="Decorative Pro" class="homeIcon"><div class="homeKicker">مدیریت حرفه‌ای کسب‌وکار</div><div class="homeQuote">«${quotes[new Date().getDate()%quotes.length]}»</div><div class="homeHint">برای شروع، منوی برنامه را باز کنید</div></div></section>`}
+
+function show(page){closeDrawer(); if(page==='home')return home();if(page==='customers')return customers();if(page==='projects')return projects();if(page==='receipts')return receipts();if(page==='invoices')return invoices();if(page==='preinvoices')return preinvoices();if(page==='contracts')return contractsPage();if(page==='accounts')return accounts();if(page==='reports')return reports();if(page==='backup')return backup();if(page==='settings')return settings()}
+
+// Update menu with independent documents
+const nav=document.querySelector('.nav'); if(nav){nav.innerHTML=`<button class="menuHome" onclick="show('home')">🏠 صفحه اصلی</button><details class="menuGroup"><summary>👥 مشتری و پروژه</summary><div class="menuSub"><button onclick="show('customers')">👥 مشتریان</button><button onclick="show('projects')">🏗️ پروژه‌ها</button></div></details><details class="menuGroup"><summary>📄 اسناد</summary><div class="menuSub"><button onclick="show('invoices')">🔨 فاکتور خدمات نصب</button><button onclick="show('preinvoices')">📋 پیش‌فاکتور خدمات</button><button onclick="show('contracts')">📑 قراردادها</button></div></details><details class="menuGroup"><summary>💰 امور مالی</summary><div class="menuSub"><button onclick="show('receipts')">💰 دریافتی‌ها و رسیدها</button><button onclick="show('accounts')">🏦 حساب‌ها و کارت‌ها</button><button onclick="show('reports')">📊 گزارش‌ها</button></div></details><details class="menuGroup"><summary>⚙️ سیستم</summary><div class="menuSub"><button onclick="show('backup')">💾 پشتیبان‌گیری</button><button onclick="show('settings')">⚙️ تنظیمات</button></div></details>`; show('home');}
+
+function serviceEditor(items=[]){let arr=items.length?items:[{desc:'',amount:0}];return `<div id="serviceRows" class="serviceRows">${arr.map((it,i)=>`<div class="serviceRow serviceItem"><div class="field"><label>شرح خدمت انجام‌شده</label><input class="svcDesc" value="${esc(it.desc||'')}" placeholder="مثلاً نصب آشپزخانه"></div><div class="field"><label>مبلغ</label><input class="svcAmount moneyInput" data-money inputmode="numeric" value="${formatAmountValue(it.amount||0)}"></div><button type="button" class="danger" onclick="this.closest('.serviceRow').remove()">✕</button></div>`).join('')}</div><button type="button" class="secondary" style="margin-top:10px" onclick="addServiceRow()">+ افزودن خدمت</button>`}
+function addServiceRow(){let box=document.getElementById('serviceRows');if(!box)return;let d=document.createElement('div');d.className='serviceRow serviceItem';d.innerHTML=`<div class="field"><label>شرح خدمت انجام‌شده</label><input class="svcDesc" placeholder="مثلاً نصب کمد"></div><div class="field"><label>مبلغ</label><input class="svcAmount moneyInput" data-money inputmode="numeric"></div><button type="button" class="danger" onclick="this.closest('.serviceRow').remove()">✕</button>`;box.appendChild(d);attachMoneyInputs(d)}
+function collectServices(){return [...document.querySelectorAll('.serviceItem')].map(r=>({desc:r.querySelector('.svcDesc')?.value.trim()||'',amount:num(r.querySelector('.svcAmount')?.value)})).filter(x=>x.desc&&x.amount>=0)}
+
+function invoices(){let items=db.invoices.map((x,i)=>`<div class="card invoiceCard" data-search="${esc((x.customer||'')+' '+(x.number||'')+' '+(x.items||[]).map(y=>y.desc).join(' '))}"><div class="row"><div><b>${esc(x.customer||'بدون مشتری')}</b><div class="muted">${esc(x.number||'-')} · ${esc(x.date||'-')}</div></div><b>${money(x.total)}</b></div><div class="muted" style="margin-top:8px">${(x.items||[]).map(y=>esc(y.desc)).join(' · ')}</div><div class="actions" style="margin-top:10px"><button class="primary" onclick="previewInvoice(${i})">👁️ مشاهده / PDF</button><button class="secondary" onclick="editInvoice(${i})">ویرایش</button><button class="danger" onclick="del('invoices',${i},'فاکتور')">حذف</button></div></div>`).join('');document.getElementById('view').innerHTML=`<div class="sectionTitle"><h2>🔨 فاکتور خدمات نصب و اجرا</h2><button class="primary" onclick="newInvoice()">+ فاکتور خدمات</button></div><div class="card" style="margin-bottom:12px"><div class="field"><label>جستجوی فاکتور</label><input id="invoiceSearch" placeholder="مشتری، شماره فاکتور یا خدمت..." oninput="filterInvoices()"></div></div><div class="list">${items||'<div class="empty">هنوز فاکتور خدماتی ثبت نشده است.</div>'}</div>`}
+function newInvoice(existingIndex=null, customerName=''){let x=existingIndex==null?{customer:customerName,number:'INS-'+Date.now().toString().slice(-6),items:[{desc:'',amount:0}],card:'',notes:''}:db.invoices[existingIndex];modal(`<h2>${existingIndex==null?'🔨 فاکتور خدمات نصب و اجرا':'✏️ ویرایش فاکتور خدمات'}</h2><form class="form" onsubmit="saveInvoice(event,${existingIndex})"><div class="field"><label>مشتری *</label><input id="i_customer" required value="${esc(x.customer||'')}"></div><div class="grid"><div class="field"><label>شماره فاکتور</label><input id="i_number" value="${esc(x.number||'')}"></div><div class="field"><label>تاریخ</label><input id="i_date" type="date" value="${x.isoDate||new Date().toISOString().slice(0,10)}"></div></div><div class="field"><label>🔨 خدمات انجام‌شده</label>${serviceEditor(x.items||[])}</div><div class="field"><label>شماره کارت / حساب</label><input id="i_card" value="${esc(x.card||'')}"></div><div class="field"><label>توضیحات</label><textarea id="i_notes">${esc(x.notes||'')}</textarea></div><div class="formActions"><button class="primary">ذخیره فاکتور</button><button type="button" class="secondary" onclick="closeModal()">انصراف</button></div></form>`);attachMoneyInputs(document.getElementById('dialog'))}
+function saveInvoice(e,i){e.preventDefault();let items=collectServices();if(!items.length){toast('حداقل یک خدمت وارد کنید');return}let total=items.reduce((a,x)=>a+x.amount,0);let iso=i==null?i_date.value:(i_date.value||db.invoices[i].isoDate);let data={customer:i_customer.value.trim(),number:i_number.value.trim()||'INS-'+Date.now().toString().slice(-6),items,total,card:i_card.value.trim(),notes:i_notes.value.trim(),isoDate:iso,date:isoToFa(iso)};if(i==null)db.invoices.push(data);else db.invoices[i]=data;save();closeModal();invoices();toast(i==null?'فاکتور خدمات ذخیره شد':'فاکتور خدمات ویرایش شد')}
+function previewInvoice(i){let x=db.invoices[i],rows=(x.items||[]).map((it,n)=>`<tr><td>${n+1}</td><td>${esc(it.desc)}</td><td>${money(it.amount)}</td></tr>`).join('');modal(`<div id="docPrint" class="docPaper"><div class="docHead"><div class="invoiceTop"><div><div class="docTitle">فاکتور خدمات نصب و اجرا</div><div style="margin-top:5px">${esc(db.settings.business||'Decorative')}</div></div><div class="invoiceMeta"><div>شماره فاکتور</div><b>${esc(x.number||'-')}</b><div style="margin-top:6px">تاریخ: ${esc(x.date||'-')}</div></div></div></div><div class="docBody"><div class="docGrid"><div class="docBox"><small>مشتری</small><b>${esc(x.customer||'-')}</b></div><div class="docBox"><small>حساب / کارت دریافت</small><b>${esc(x.card||'-')}</b></div></div><table class="docTable"><thead><tr><th style="width:60px">ردیف</th><th>شرح خدمات انجام‌شده</th><th style="width:190px">مبلغ</th></tr></thead><tbody>${rows}</tbody></table><div class="docTotal"><div style="display:flex;justify-content:space-between"><span>جمع خدمات</span><b>${money(x.total)}</b></div><div class="final"><span>مبلغ نهایی</span><span>${money(x.total)}</span></div><div class="muted" style="margin-top:10px;color:#64748b">${esc(amountToWords(x.total))}</div></div>${x.notes?`<div class="docBox" style="margin-top:18px"><small>توضیحات</small>${esc(x.notes)}</div>`:''}<div class="docFoot"><span>از اعتماد شما سپاسگزاریم.</span><span>فاکتور خدمات نصب و اجرا</span></div></div></div><div class="formActions noPrint" style="margin-top:14px"><button class="primary" onclick="window.print()">🖨️ چاپ / ذخیره PDF</button><button class="secondary" onclick="editInvoice(${i})">✏️ ویرایش</button><button class="secondary" onclick="closeModal()">بستن</button></div>`)}
+
+function preinvoices(){let items=db.preInvoices.map((x,i)=>`<div class="card"><div class="row"><div><b>${esc(x.customer||'-')}</b><div class="muted">${esc(x.number||'-')} · ${esc(x.date||'-')}</div></div><b>${money(x.total)}</b></div><div class="muted" style="margin-top:8px">${(x.items||[]).map(y=>esc(y.desc)).join(' · ')}</div><div class="actions" style="margin-top:10px"><button class="primary" onclick="previewPreInvoice(${i})">👁️ مشاهده / PDF</button><button class="secondary" onclick="editPreInvoice(${i})">ویرایش</button><button class="danger" onclick="del('preInvoices',${i},'پیش‌فاکتور')">حذف</button></div></div>`).join('');document.getElementById('view').innerHTML=`<div class="sectionTitle"><h2>📋 پیش‌فاکتور خدمات</h2><button class="primary" onclick="newPreInvoice()">+ پیش‌فاکتور</button></div><div class="list">${items||'<div class="empty">هنوز پیش‌فاکتوری ثبت نشده است.</div>'}</div>`}
+function newPreInvoice(i=null){let x=i==null?{customer:'',number:'PRE-'+Date.now().toString().slice(-6),items:[{desc:'',amount:0}],card:'',notes:''}:db.preInvoices[i];modal(`<h2>${i==null?'📋 پیش‌فاکتور خدمات':'✏️ ویرایش پیش‌فاکتور'}</h2><form class="form" onsubmit="savePreInvoice(event,${i})"><div class="field"><label>مشتری *</label><input id="pfi_customer" required value="${esc(x.customer||'')}"></div><div class="grid"><div class="field"><label>شماره پیش‌فاکتور</label><input id="pfi_number" value="${esc(x.number||'')}"></div><div class="field"><label>تاریخ</label><input id="pfi_date" type="date" value="${x.isoDate||new Date().toISOString().slice(0,10)}"></div></div><div class="field"><label>🔨 خدمات پیشنهادی</label>${serviceEditor(x.items||[])}</div><div class="field"><label>شماره کارت / حساب</label><input id="pfi_card" value="${esc(x.card||'')}"></div><div class="field"><label>توضیحات</label><textarea id="pfi_notes">${esc(x.notes||'')}</textarea></div><div class="formActions"><button class="primary">ذخیره</button><button type="button" class="secondary" onclick="closeModal()">انصراف</button></div></form>`);attachMoneyInputs(document.getElementById('dialog'))}
+function savePreInvoice(e,i){e.preventDefault();let items=collectServices();if(!items.length){toast('حداقل یک خدمت وارد کنید');return}let total=items.reduce((a,x)=>a+x.amount,0),iso=pfi_date.value;let x={customer:pfi_customer.value.trim(),number:pfi_number.value.trim()||'PRE-'+Date.now().toString().slice(-6),items,total,card:pfi_card.value.trim(),notes:pfi_notes.value.trim(),isoDate:iso,date:isoToFa(iso)};if(i==null)db.preInvoices.push(x);else db.preInvoices[i]=x;save();closeModal();preinvoices();toast('پیش‌فاکتور ذخیره شد')}
+function editPreInvoice(i){newPreInvoice(i)}
+function previewPreInvoice(i){let x=db.preInvoices[i],rows=x.items.map((it,n)=>`<tr><td>${n+1}</td><td>${esc(it.desc)}</td><td>${money(it.amount)}</td></tr>`).join('');modal(`<div id="docPrint" class="docPaper"><div class="docHead"><div class="invoiceTop"><div><div class="docTitle">پیش‌فاکتور خدمات نصب و اجرا</div><div style="margin-top:5px">${esc(db.settings.business||'Decorative')}</div></div><div class="invoiceMeta"><div>شماره</div><b>${esc(x.number)}</b><div style="margin-top:6px">تاریخ: ${esc(x.date)}</div></div></div></div><div class="docBody"><div class="docGrid"><div class="docBox"><small>مشتری</small><b>${esc(x.customer)}</b></div><div class="docBox"><small>حساب / کارت</small><b>${esc(x.card||'-')}</b></div></div><table class="docTable"><thead><tr><th>ردیف</th><th>شرح خدمات</th><th>مبلغ پیشنهادی</th></tr></thead><tbody>${rows}</tbody></table><div class="docTotal"><div class="final"><span>جمع پیشنهادی</span><span>${money(x.total)}</span></div><div class="muted" style="margin-top:10px;color:#64748b">${esc(amountToWords(x.total))}</div></div>${x.notes?`<div class="docBox" style="margin-top:18px"><small>توضیحات</small>${esc(x.notes)}</div>`:''}</div></div><div class="formActions noPrint" style="margin-top:14px"><button class="primary" onclick="window.print()">🖨️ چاپ / ذخیره PDF</button><button class="secondary" onclick="closeModal()">بستن</button></div>`)}
+
+function contractsPage(){let items=db.contracts.map((x,i)=>`<div class="card"><div class="row"><div><b>${esc(x.customer||'-')}</b><div class="muted">${esc(x.number||'-')} · ${esc(x.type||'قرارداد')}</div></div><b>${money(x.amount)}</b></div><div class="muted" style="margin-top:8px">${esc(x.subject||'')}</div><div class="actions" style="margin-top:10px"><button class="primary" onclick="previewContract(${i})">👁️ مشاهده / PDF</button><button class="secondary" onclick="editContract(${i})">ویرایش</button><button class="danger" onclick="del('contracts',${i},'قرارداد')">حذف</button></div></div>`).join('');document.getElementById('view').innerHTML=`<div class="sectionTitle"><h2>📑 قراردادها</h2><button class="primary" onclick="newContract()">+ قرارداد</button></div><div class="muted" style="margin-bottom:12px">این بخش مستقل از فاکتور و پیش‌فاکتور است.</div><div class="list">${items||'<div class="empty">هنوز قراردادی ثبت نشده است.</div>'}</div>`}
+function newContract(i=null){let x=i==null?{customer:'',number:'CON-'+Date.now().toString().slice(-6),type:'کابینت / پروژه بزرگ',subject:'',amount:0,advance:0,installments:'',terms:'',start:'',delivery:'',notes:''}:db.contracts[i];modal(`<h2>${i==null?'📑 قرارداد جدید':'✏️ ویرایش قرارداد'}</h2><form class="form" onsubmit="saveContract(event,${i})"><div class="field"><label>مشتری *</label><input id="c_customer" required value="${esc(x.customer||'')}"></div><div class="grid"><div class="field"><label>شماره قرارداد</label><input id="c_number" value="${esc(x.number||'')}"></div><div class="field"><label>نوع قرارداد</label><select id="c_type"><option>کابینت / پروژه بزرگ</option><option>MDF</option><option>هایگلاس</option><option>ممبران</option><option>روکش چوب</option><option>روکش رنگ</option><option>پولیشی</option><option>سفارشی</option></select></div></div><div class="field"><label>موضوع قرارداد</label><input id="c_subject" value="${esc(x.subject||'')}" placeholder="مثلاً طراحی، ساخت و نصب کابینت"></div><div class="grid"><div class="field"><label>مبلغ قرارداد</label><input id="c_amount" class="moneyInput" data-money inputmode="numeric" value="${formatAmountValue(x.amount||0)}"></div><div class="field"><label>پیش‌پرداخت</label><input id="c_advance" class="moneyInput" data-money inputmode="numeric" value="${formatAmountValue(x.advance||0)}"></div></div><div class="field"><label>شرایط پرداخت</label><textarea id="c_installments">${esc(x.installments||'')}</textarea></div><div class="grid"><div class="field"><label>تاریخ شروع</label><input id="c_start" type="date" value="${x.start||''}"></div><div class="field"><label>تاریخ تحویل</label><input id="c_delivery" type="date" value="${x.delivery||''}"></div></div><div class="field"><label>تعهدات و شرایط قرارداد</label><textarea id="c_terms" style="min-height:130px">${esc(x.terms||'')}</textarea></div><div class="field"><label>توضیحات</label><textarea id="c_notes">${esc(x.notes||'')}</textarea></div><div class="formActions"><button class="primary">ذخیره قرارداد</button><button type="button" class="secondary" onclick="closeModal()">انصراف</button></div></form>`);document.getElementById('c_type').value=x.type||'کابینت / پروژه بزرگ';attachMoneyInputs(document.getElementById('dialog'))}
+function saveContract(e,i){e.preventDefault();let x={customer:c_customer.value.trim(),number:c_number.value.trim()||'CON-'+Date.now().toString().slice(-6),type:c_type.value,subject:c_subject.value.trim(),amount:num(c_amount.value),advance:num(c_advance.value),installments:c_installments.value,terms:c_terms.value,start:c_start.value,delivery:c_delivery.value,notes:c_notes.value};if(i==null)db.contracts.push(x);else db.contracts[i]=x;save();closeModal();contractsPage();toast('قرارداد ذخیره شد')}
+function editContract(i){newContract(i)}
+function previewContract(i){let x=db.contracts[i];modal(`<div id="docPrint" class="docPaper"><div class="docHead"><div class="invoiceTop"><div><div class="docTitle">قرارداد خدمات و اجرای پروژه</div><div style="margin-top:5px">${esc(db.settings.business||'Decorative')}</div></div><div class="invoiceMeta"><div>شماره قرارداد</div><b>${esc(x.number)}</b></div></div></div><div class="docBody"><div class="docGrid"><div class="docBox"><small>کارفرما / مشتری</small><b>${esc(x.customer)}</b></div><div class="docBox"><small>نوع قرارداد</small><b>${esc(x.type)}</b></div></div><div class="docBox" style="margin-top:14px"><small>موضوع قرارداد</small><b>${esc(x.subject||'-')}</b></div><table class="docTable"><tbody><tr><th>مبلغ قرارداد</th><td>${money(x.amount)}</td></tr><tr><th>پیش‌پرداخت</th><td>${money(x.advance)}</td></tr><tr><th>شروع</th><td>${isoToFa(x.start)}</td></tr><tr><th>تحویل</th><td>${isoToFa(x.delivery)}</td></tr></tbody></table><div class="docBox" style="margin-top:18px"><small>شرایط پرداخت</small><div>${esc(x.installments||'-').replace(/\n/g,'<br>')}</div></div><div class="docBox" style="margin-top:14px"><small>تعهدات و شرایط</small><div>${esc(x.terms||'-').replace(/\n/g,'<br>')}</div></div>${x.notes?`<div class="docBox" style="margin-top:14px"><small>توضیحات</small>${esc(x.notes)}</div>`:''}<div class="signatureGrid"><div class="signature">امضای کارفرما</div><div class="signature">امضای مجری</div></div></div></div><div class="formActions noPrint" style="margin-top:14px"><button class="primary" onclick="window.print()">🖨️ چاپ / ذخیره PDF</button><button class="secondary" onclick="closeModal()">بستن</button></div>`)}
+
+function receipts(){let items=db.receipts.map((r,i)=>`<div class="card"><div class="row"><div><b>${esc(r.customer||'دریافت')}</b><div class="muted">${esc(r.date||'')} · ${esc(r.method||'')}</div></div><b>${money(r.amount)}</b></div><div class="muted" style="margin-top:8px">${esc(r.notes||'')}</div><div class="actions" style="margin-top:10px"><button class="primary" onclick="previewReceipt(${i})">🧾 رسید</button><button class="danger" onclick="del('receipts',${i},'دریافتی')">حذف</button></div></div>`).join('');document.getElementById('view').innerHTML=`<div class="sectionTitle"><h2>💰 دریافتی‌ها</h2><button class="primary" onclick="newReceipt()">+ دریافتی</button></div><div class="list">${items||'<div class="empty">هنوز دریافتی ثبت نشده است.</div>'}</div>`}
+function newReceipt(customerName=''){let accounts=db.accounts.map(a=>`<option value="${esc(a.number||a.title)}">${esc(a.title)}${a.number?' — '+esc(a.number):''}</option>`).join('');modal(`<h2>💰 ثبت دریافتی</h2><form class="form" onsubmit="saveReceipt(event)"><div class="field"><label>دریافت از *</label><input id="r_customer" required value="${esc(customerName)}"></div><div class="field"><label>مبلغ دریافتی *</label><input id="r_amount" class="moneyInput" data-money required inputmode="numeric"></div><div class="grid"><div class="field"><label>تاریخ دریافت</label><input id="r_date" type="date" value="${new Date().toISOString().slice(0,10)}"></div><div class="field"><label>روش دریافت</label><select id="r_method"><option>کارت</option><option>حساب بانکی</option><option>نقدی</option><option>انتقال</option><option>سایر</option></select></div></div><div class="field"><label>حساب مقصد</label><select id="r_account"><option value="">انتخاب حساب</option>${accounts}</select></div><div class="field"><label>بابت</label><input id="r_for" placeholder="مثلاً نصب آشپزخانه"></div><div class="field"><label>توضیحات</label><textarea id="r_notes"></textarea></div><div class="formActions"><button class="primary">ثبت دریافتی و رسید</button><button type="button" class="secondary" onclick="closeModal()">انصراف</button></div></form>`);attachMoneyInputs(document.getElementById('dialog'))}
+function saveReceipt(e){e.preventDefault();let amount=num(r_amount.value);if(!amount){toast('مبلغ را وارد کنید');return}db.receipts.push({customer:r_customer.value.trim(),amount,date:isoToFa(r_date.value),isoDate:r_date.value,method:r_method.value,account:r_account.value,for:r_for.value.trim(),notes:r_notes.value.trim(),number:'REC-'+Date.now().toString().slice(-6)});save();let idx=db.receipts.length-1;closeModal();receipts();toast('دریافتی ثبت شد');setTimeout(()=>previewReceipt(idx),150)}
+function previewReceipt(i){let x=db.receipts[i];modal(`<div id="docPrint" class="docPaper"><div class="docHead"><div class="invoiceTop"><div><div class="docTitle">رسید دریافت وجه</div><div style="margin-top:5px">${esc(db.settings.business||'Decorative')}</div></div><div class="invoiceMeta"><div>شماره رسید</div><b>${esc(x.number||'-')}</b><div style="margin-top:6px">تاریخ: ${esc(x.date||'-')}</div></div></div></div><div class="docBody"><div class="docGrid"><div class="docBox"><small>دریافت شد از</small><b>${esc(x.customer||'-')}</b></div><div class="docBox"><small>روش دریافت</small><b>${esc(x.method||'-')}</b></div></div><div class="docBox" style="margin-top:14px"><small>مبلغ دریافت‌شده</small><div style="font-size:26px;font-weight:900;margin-top:5px">${money(x.amount)}</div><div style="color:#64748b;margin-top:6px">${esc(amountToWords(x.amount))}</div></div><table class="docTable"><tbody><tr><th>بابت</th><td>${esc(x.for||'-')}</td></tr><tr><th>حساب مقصد</th><td>${esc(x.account||'-')}</td></tr><tr><th>توضیحات</th><td>${esc(x.notes||'-')}</td></tr></tbody></table><div class="signatureGrid"><div class="signature">امضای دریافت‌کننده</div><div class="signature">امضای پرداخت‌کننده</div></div><div class="docFoot"><span>رسید دریافت وجه</span><span>${esc(db.settings.business||'Decorative')}</span></div></div></div><div class="formActions noPrint" style="margin-top:14px"><button class="primary" onclick="window.print()">🖨️ چاپ / ذخیره PDF</button><button class="secondary" onclick="closeModal()">بستن</button></div>`)}
+
+function reports(){let rec=db.receipts.reduce((a,x)=>a+num(x.amount),0),inv=db.invoices.reduce((a,x)=>a+num(x.total),0),pre=db.preInvoices.reduce((a,x)=>a+num(x.total),0),con=db.contracts.reduce((a,x)=>a+num(x.amount),0);document.getElementById('view').innerHTML=`<div class="sectionTitle"><h2>📊 گزارش‌ها</h2></div><div class="grid"><div class="card stat">مجموع دریافتی<b>${money(rec)}</b></div><div class="card stat">فاکتور خدمات<b>${money(inv)}</b></div><div class="card stat">پیش‌فاکتورها<b>${money(pre)}</b></div><div class="card stat">قراردادها<b>${money(con)}</b></div></div>`}
+
+// Ensure all money fields in legacy project/customer screens are formatted
+const _newProject=newProject;newProject=function(i=null){_newProject(i);setTimeout(()=>attachMoneyInputs(document.getElementById('dialog')),0)};
+const _saveProject=saveProject;saveProject=function(e,i){let el=document.getElementById('p_amount');if(el)el.value=num(el.value);return _saveProject(e,i)};
+const _settings=settings;settings=function(){_settings();};
+</script>
+
+<script>
+// Final v6 wiring
+function del(k,i,label){if(!confirm('حذف شود؟'))return; if(!Array.isArray(db[k]))return; db[k].splice(i,1);save();let page=k==='customers'?'customers':k==='projects'?'projects':k==='receipts'?'receipts':k==='invoices'?'invoices':k==='preInvoices'?'preinvoices':k==='contracts'?'contracts':k==='accounts'?'accounts':'home';show(page);toast(label+' حذف شد')}
+function settings(){document.getElementById('view').innerHTML=`<div class="sectionTitle"><h2>⚙️ تنظیمات</h2></div><div class="card"><div class="field"><label>نام برنامه</label><input id="appName" value="${esc(db.settings.appName||'Decorative Pro')}" placeholder="نام برنامه"></div><div class="field" style="margin-top:12px"><label>نام کسب‌وکار</label><input id="biz" value="${esc(db.settings.business||'Decorative')}"></div><div class="field" style="margin-top:12px"><label>تم</label><select id="theme"><option value="light">روشن</option><option value="dark">تاریک</option></select></div><div class="field" style="margin-top:12px"><label>رنگ اصلی</label><select id="accent"><option value="#5b5cf0">بنفش</option><option value="#2563eb">آبی</option><option value="#059669">سبز</option><option value="#dc2626">قرمز</option><option value="#d97706">نارنجی</option></select></div><div class="actions" style="margin-top:14px"><button class="primary" onclick="saveSettings()">ذخیره تنظیمات</button></div></div>`;theme.value=db.settings.theme||'light';accent.value=db.settings.accent||'#5b5cf0'}
+function saveSettings(){db.settings.appName=(document.getElementById('appName').value||'Decorative Pro').trim();db.settings.business=(document.getElementById('biz').value||'Decorative').trim();db.settings.theme=document.getElementById('theme').value;db.settings.accent=document.getElementById('accent').value;save();applyTheme();document.title=db.settings.appName;document.querySelector('.brand').lastChild?.remove();document.querySelector('.brand').appendChild(document.createTextNode(db.settings.appName));toast('تنظیمات ذخیره شد')}
+document.title=db.settings.appName||'Decorative Pro';
+if(document.querySelector('.brand'))document.querySelector('.brand').lastChild?.remove(),document.querySelector('.brand').appendChild(document.createTextNode(db.settings.appName||'Decorative Pro'));
+</script>
+
+<style id="v8-clean-css">
+.menuGroup{margin-bottom:8px}.menuGroup summary{font-size:14px}.menuSub button{width:100%;text-align:right}.menuHome{margin-bottom:8px}
+.globalSearchResults{display:grid;gap:8px}.resultCard{cursor:pointer}.alertCard{border-right:4px solid var(--accent)}.alertWarn{border-right-color:#d97706}.alertDanger{border-right-color:#dc2626}
+.thumbGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}.thumbGrid img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:12px;border:1px solid var(--line)}
+.calendarDay{display:grid;gap:5px;padding:13px;border:1px solid var(--line);border-radius:14px;background:var(--card)}
+.pinOverlayV8{position:fixed;inset:0;z-index:100;background:rgba(15,23,42,.96);display:none;align-items:center;justify-content:center;padding:20px}.pinOverlayV8.open{display:flex}.pinBoxV8{width:min(360px,100%);background:#fff;color:#111;border-radius:24px;padding:24px;text-align:center;box-shadow:0 25px 80px rgba(0,0,0,.35)}.pinBoxV8 input{text-align:center;font-size:28px;letter-spacing:8px}
+.barChartV8{display:grid;gap:9px}.barRowV8{display:grid;grid-template-columns:85px 1fr 100px;gap:8px;align-items:center}.barV8{height:11px;border-radius:999px;background:linear-gradient(90deg,var(--accent),#8b5cf6);min-width:2px}
+@media(max-width:600px){.barRowV8{grid-template-columns:70px 1fr 82px;font-size:12px}}
+</style>
+
+<script id="v8-clean-script">
+/* Decorative Pro v8 — clean additive management layer. No legacy function is duplicated in this block except deliberate UI overrides. */
+if(!Array.isArray(db.preInvoices))db.preInvoices=[];
+if(!Array.isArray(db.contracts))db.contracts=[];
+if(!Array.isArray(db.accounts))db.accounts=[];
+if(!db.settings)db.settings={business:'Decorative',theme:'light',accent:'#5b5cf0'};
+if(!('appName' in db.settings))db.settings.appName='Decorative Pro';
+if(!('pinEnabled' in db.settings))db.settings.pinEnabled=false;
+if(!('pin' in db.settings))db.settings.pin='';
+db.projects.forEach(p=>{if(!Array.isArray(p.photos))p.photos=[]});
+
+function v8Date(v){return typeof isoToFa==='function'?isoToFa(v):'-'}
+function v8Text(v){return typeof esc==='function'?esc(v??''):String(v??'')}
+function v8Num(v){return typeof num==='function'?num(v):Number(String(v||'').replace(/[,٬]/g,''))||0}
+
+function openDrawer(){
+ closeDrawer();
+ const d=document.getElementById('drawer');
+ const p=d?.querySelector('.nav'); if(!p)return;
+ p.innerHTML=`
+ <button class="menuHome" onclick="show('home')">🏠 صفحه اصلی</button>
+ <details class="menuGroup"><summary>👥 مشتری و پروژه</summary><div class="menuSub">
+   <button onclick="show('customers')">مشتریان و پرونده‌ها</button><button onclick="show('projects')">پروژه‌ها</button><button onclick="show('calendar')">📅 تقویم و موعدها</button>
+ </div></details>
+ <details class="menuGroup"><summary>📄 اسناد</summary><div class="menuSub">
+   <button onclick="show('invoices')">🔨 فاکتور خدمات نصب</button><button onclick="show('preinvoices')">📋 پیش‌فاکتور خدمات</button><button onclick="show('contracts')">📑 قرارداد</button>
+ </div></details>
+ <details class="menuGroup"><summary>💰 امور مالی</summary><div class="menuSub">
+   <button onclick="show('receipts')">💰 دریافتی و رسید</button><button onclick="show('accounts')">🏦 حساب‌ها و کارت‌ها</button><button onclick="show('reports')">📊 گزارش مدیریتی</button>
+ </div></details>
+ <details class="menuGroup"><summary>🔔 پیگیری و ابزار</summary><div class="menuSub">
+   <button onclick="show('alerts')">🔔 هشدارها و سررسیدها</button><button onclick="v8GlobalSearch()">🔎 جستجوی سراسری</button><button onclick="show('backup')">💾 پشتیبان‌گیری</button>
+ </div></details>
+ <details class="menuGroup"><summary>⚙️ سیستم</summary><div class="menuSub"><button onclick="show('settings')">⚙️ تنظیمات و امنیت</button></div></details>`;
+ d.classList.add('open');
+}
+
+function show(page){
+ closeDrawer();
+ if(page==='home')return home();
+ if(page==='customers')return customers();
+ if(page==='projects')return projects();
+ if(page==='receipts')return receipts();
+ if(page==='invoices')return invoices();
+ if(page==='preinvoices')return preinvoices();
+ if(page==='contracts')return contractsPage();
+ if(page==='accounts')return accounts();
+ if(page==='reports')return reports();
+ if(page==='alerts')return v8Alerts();
+ if(page==='calendar')return v8Calendar();
+ if(page==='backup')return backup();
+ if(page==='settings')return settings();
+}
+
+function customerFinance(i){
+ const c=db.customers[i]; if(!c)return;
+ const projects=db.projects.filter(x=>x.customer===c.name);
+ const receipts=db.receipts.filter(x=>x.customer===c.name);
+ const invoices=db.invoices.filter(x=>x.customer===c.name);
+ const pre=db.preInvoices.filter(x=>x.customer===c.name);
+ const contracts=db.contracts.filter(x=>x.customer===c.name);
+ const total=projects.reduce((a,x)=>a+v8Num(x.amount),0)+contracts.reduce((a,x)=>a+v8Num(x.amount),0);
+ const received=receipts.reduce((a,x)=>a+v8Num(x.amount),0);
+ const remain=Math.max(total-received,0);
+ modal(`<div class="row"><h2>پرونده کامل — ${v8Text(c.name)}</h2><button class="secondary" onclick="closeModal()">✕</button></div>
+ <div class="grid"><div class="card"><span class="muted">پروژه‌ها</span><b>${projects.length.toLocaleString('fa-IR')}</b></div><div class="card"><span class="muted">کل تعهد مالی</span><b>${money(total)}</b></div><div class="card"><span class="muted">دریافتی</span><b>${money(received)}</b></div><div class="card"><span class="muted">مانده</span><b>${money(remain)}</b></div></div>
+ <div class="card" style="margin-top:12px"><b>اطلاعات مشتری</b><div class="muted" style="margin-top:8px">📞 ${v8Text(c.phone||'ثبت نشده')}</div><div class="muted">📍 ${v8Text(c.address||'ثبت نشده')}</div><div class="muted">📝 ${v8Text(c.notes||'بدون توضیحات')}</div></div>
+ <h3>🏗️ پروژه‌ها</h3><div class="list">${projects.map(x=>`<div class="card"><div class="row"><b>${v8Text(x.name)}</b><b>${money(x.amount)}</b></div><div class="muted">${v8Text(x.status||'')} · تحویل: ${v8Date(x.delivery)}</div>${x.photos?.length?`<div class="thumbGrid">${x.photos.slice(0,6).map(src=>`<img src="${src}" alt="">`).join('')}</div>`:''}</div>`).join('')||'<div class="empty">پروژه‌ای ثبت نشده است.</div>'}</div>
+ <h3>💰 دریافتی‌ها</h3><div class="list">${receipts.map(x=>`<div class="card"><div class="row"><span>${v8Date(x.isoDate||'')} · ${v8Text(x.method||'')}</span><b>${money(x.amount)}</b></div><div class="muted">${v8Text(x.for||x.notes||'')}</div></div>`).join('')||'<div class="empty">دریافتی‌ای ثبت نشده است.</div>'}</div>
+ <h3>📄 اسناد</h3><div class="list">${[
+ ...invoices.map(x=>`<div class="card"><div class="row"><span>🔨 فاکتور ${v8Text(x.number||'-')}</span><b>${money(x.total)}</b></div></div>`),
+ ...pre.map(x=>`<div class="card"><div class="row"><span>📋 پیش‌فاکتور ${v8Text(x.number||'-')}</span><b>${money(x.total)}</b></div></div>`),
+ ...contracts.map(x=>`<div class="card"><div class="row"><span>📑 قرارداد ${v8Text(x.number||'-')}</span><b>${money(x.amount)}</b></div></div>`)
+ ].join('')||'<div class="empty">سندی ثبت نشده است.</div>'}</div>
+ <div class="formActions" style="margin-top:15px"><button class="primary" onclick="closeModal();newReceipt('${v8Text(c.name)}')">+ دریافتی</button><button class="secondary" onclick="closeModal();newInvoiceForCustomer('${v8Text(c.name)}')">🔨 فاکتور خدمات</button><button class="secondary" onclick="closeModal();editCustomer(${i})">ویرایش</button><button class="secondary" onclick="closeModal()">بستن</button></div>`);
+}
+
+function projects(){
+ const items=db.projects.map((p,i)=>`<div class="card"><div class="row"><div><b>${v8Text(p.name)}</b><div class="muted">${v8Text(p.customer||'بدون مشتری')} · ${money(p.amount)}</div></div><span class="badge">${v8Text(p.status||'فعال')}</span></div><div class="muted" style="margin-top:8px">شروع: ${v8Date(p.start)} · تحویل: ${v8Date(p.delivery)}</div>${p.photos?.length?`<div class="thumbGrid">${p.photos.slice(0,3).map(src=>`<img src="${src}" alt="">`).join('')}</div>`:''}<div class="actions" style="margin-top:10px"><button class="secondary" onclick="editProject(${i})">ویرایش</button><button class="secondary" onclick="v8ProjectDetails(${i})">جزئیات</button><button class="danger" onclick="del('projects',${i},'پروژه')">حذف</button></div></div>`).join('');
+ document.getElementById('view').innerHTML=`<div class="sectionTitle"><h2>🏗️ پروژه‌ها</h2><button class="primary" onclick="newProject()">+ پروژه</button></div><div class="card" style="margin-bottom:12px"><div class="field"><label>جستجوی پروژه</label><input id="v8ProjectSearch" placeholder="نام پروژه یا مشتری..." oninput="v8FilterProjects(this.value)"></div></div><div id="v8ProjectList" class="list">${items||'<div class="empty">هنوز پروژه‌ای ثبت نشده است.</div>'}</div>`;
+}
+function v8FilterProjects(q){q=(q||'').trim().toLowerCase();document.querySelectorAll('#v8ProjectList>.card').forEach(c=>c.style.display=c.textContent.toLowerCase().includes(q)?'':'none')}
+function v8ProjectDetails(i){const p=db.projects[i];if(!p)return;modal(`<div class="row"><h2>${v8Text(p.name)}</h2><button class="secondary" onclick="closeModal()">✕</button></div><div class="grid"><div class="card"><span class="muted">مبلغ</span><b>${money(p.amount)}</b></div><div class="card"><span class="muted">وضعیت</span><b>${v8Text(p.status)}</b></div></div><div class="card" style="margin-top:12px"><b>مشتری:</b> ${v8Text(p.customer||'-')}<br><b>شروع:</b> ${v8Date(p.start)}<br><b>تحویل:</b> ${v8Date(p.delivery)}<br><b>توضیحات:</b> ${v8Text(p.notes||'-')}</div>${p.photos?.length?`<h3>📸 تصاویر پروژه</h3><div class="thumbGrid">${p.photos.map(src=>`<img src="${src}" alt="">`).join('')}</div>`:''}<div class="formActions" style="margin-top:14px"><button class="primary" onclick="closeModal();newReceipt('${v8Text(p.customer||'')}')">+ ثبت دریافتی</button><button class="secondary" onclick="closeModal();editProject(${i})">ویرایش پروژه</button></div>`)}
+
+function newProject(i=null){
+ const p=i==null?{name:'',customer:'',amount:0,status:'فعال',start:'',delivery:'',notes:'',photos:[]}:(db.projects[i]||{});
+ modal(`<h2>${i==null?'پروژه جدید':'ویرایش پروژه'}</h2><form class="form" onsubmit="v8SaveProject(event,${i})"><div class="field"><label>نام پروژه *</label><input id="v8_p_name" required value="${v8Text(p.name)}"></div><div class="field"><label>مشتری</label><input id="v8_p_customer" value="${v8Text(p.customer)}"></div><div class="field"><label>مبلغ پروژه</label><input id="v8_p_amount" class="moneyInput" data-money inputmode="numeric" value="${formatAmountValue(p.amount||0)}"></div><div class="grid"><div class="field"><label>وضعیت</label><select id="v8_p_status"><option>فعال</option><option>در انتظار</option><option>در حال اجرا</option><option>تکمیل‌شده</option><option>لغوشده</option></select></div><div class="field"><label>تاریخ شروع</label><input id="v8_p_start" type="date" value="${v8Text(p.start||'')}"></div></div><div class="field"><label>تاریخ تحویل</label><input id="v8_p_delivery" type="date" value="${v8Text(p.delivery||'')}"></div><div class="field"><label>عکس‌های پروژه</label><input id="v8_p_photos" type="file" accept="image/*" multiple><div class="muted">حداکثر ۸ عکس؛ تصاویر روی همین دستگاه ذخیره می‌شوند.</div>${p.photos?.length?`<div class="thumbGrid">${p.photos.slice(0,8).map(src=>`<img src="${src}" alt="">`).join('')}</div>`:''}</div><div class="field"><label>توضیحات</label><textarea id="v8_p_notes">${v8Text(p.notes||'')}</textarea></div><div class="formActions"><button class="primary">ذخیره پروژه</button><button type="button" class="secondary" onclick="closeModal()">انصراف</button></div></form>`);
+ const st=document.getElementById('v8_p_status');if(st)st.value=p.status||'فعال';attachMoneyInputs(document.getElementById('dialog'));
+}
+function editProject(i){newProject(i)}
+function v8ResizeImage(file,max=1200,quality=.78){return new Promise(resolve=>{const r=new FileReader();r.onload=()=>{const im=new Image();im.onload=()=>{let w=im.width,h=im.height;if(w>max||h>max){const s=Math.min(max/w,max/h);w=Math.round(w*s);h=Math.round(h*s)}const c=document.createElement('canvas');c.width=w;c.height=h;c.getContext('2d').drawImage(im,0,0,w,h);resolve(c.toDataURL('image/jpeg',quality))};im.src=r.result};r.readAsDataURL(file)})}
+async function v8SaveProject(e,i){e.preventDefault();let photos=i==null?[]:(db.projects[i]?.photos||[]);const files=[...(document.getElementById('v8_p_photos')?.files||[])];for(const f of files.slice(0,8))photos.push(await v8ResizeImage(f));const x={name:document.getElementById('v8_p_name').value.trim(),customer:document.getElementById('v8_p_customer').value.trim(),amount:v8Num(document.getElementById('v8_p_amount').value),status:document.getElementById('v8_p_status').value,start:document.getElementById('v8_p_start').value,delivery:document.getElementById('v8_p_delivery').value,notes:document.getElementById('v8_p_notes').value.trim(),photos};if(i==null||i<0)db.projects.push(x);else db.projects[i]=x;save();closeModal();projects();toast('پروژه ذخیره شد')}
+
+function v8GlobalSearch(){modal(`<div><div class="row"><h2>🔎 جستجوی سراسری</h2><button class="secondary" onclick="closeModal()">✕</button></div><input id="v8GlobalQ" autofocus placeholder="مشتری، پروژه، فاکتور، قرارداد، دریافتی..." oninput="v8RunSearch(this.value)"><div id="v8GlobalResults" class="globalSearchResults" style="margin-top:12px"><div class="empty">برای جستجو چیزی بنویسید.</div></div></div>`);document.getElementById('v8GlobalQ')?.focus()}
+function v8RunSearch(q){q=(q||'').trim().toLowerCase();const out=[];if(!q){document.getElementById('v8GlobalResults').innerHTML='<div class="empty">برای جستجو چیزی بنویسید.</div>';return}db.customers.forEach((x,i)=>{if(JSON.stringify(x).toLowerCase().includes(q))out.push(`<div class="card resultCard" onclick="closeModal();customerFinance(${i})"><b>👤 ${v8Text(x.name)}</b><div class="muted">مشتری</div></div>`)});db.projects.forEach((x,i)=>{if(JSON.stringify(x).toLowerCase().includes(q))out.push(`<div class="card resultCard" onclick="closeModal();v8ProjectDetails(${i})"><b>🏗️ ${v8Text(x.name)}</b><div class="muted">${v8Text(x.customer||'')}</div></div>`)});[['invoices','🔨 فاکتور'],['preInvoices','📋 پیش‌فاکتور'],['contracts','📑 قرارداد'],['receipts','💰 دریافتی']].forEach(([k,label])=>(db[k]||[]).forEach(x=>{if(JSON.stringify(x).toLowerCase().includes(q))out.push(`<div class="card"><b>${label} ${v8Text(x.number||'-')}</b><div class="muted">${v8Text(x.customer||'')} · ${money(x.total??x.amount)}</div></div>`)}));document.getElementById('v8GlobalResults').innerHTML=out.join('')||'<div class="empty">موردی پیدا نشد.</div>'}
+
+function v8Alerts(){const now=new Date();const limit=new Date(now.getTime()+7*86400000);const out=[];db.projects.forEach(p=>{if(!p.delivery||p.status==='تکمیل‌شده')return;const d=new Date(p.delivery+'T00:00:00');if(d<now)out.push(`<div class="card alertCard alertDanger"><b>⏰ تحویل گذشته: ${v8Text(p.name)}</b><div class="muted">${v8Date(p.delivery)}</div></div>`);else if(d<=limit)out.push(`<div class="card alertCard alertWarn"><b>🔔 تحویل نزدیک: ${v8Text(p.name)}</b><div class="muted">${v8Date(p.delivery)}</div></div>`)});db.contracts.forEach(c=>{if(!c.delivery)return;const d=new Date(c.delivery+'T00:00:00');if(d<=limit)out.push(`<div class="card alertCard ${d<now?'alertDanger':'alertWarn'}"><b>📑 ${d<now?'سررسید گذشته':'سررسید نزدیک'} قرارداد ${v8Text(c.number||'-')}</b><div class="muted">${v8Text(c.customer||'')} · ${v8Date(c.delivery)}</div></div>`)});db.customers.forEach(c=>{const due=db.projects.filter(p=>p.customer===c.name).reduce((a,p)=>a+v8Num(p.amount),0)+db.contracts.filter(x=>x.customer===c.name).reduce((a,x)=>a+v8Num(x.amount),0)-db.receipts.filter(x=>x.customer===c.name).reduce((a,x)=>a+v8Num(x.amount),0);if(due>0)out.push(`<div class="card alertCard"><b>💰 مانده قابل دریافت از ${v8Text(c.name)}</b><div class="muted">${money(due)}</div></div>`)});document.getElementById('view').innerHTML=`<div class="sectionTitle"><h2>🔔 هشدارها و سررسیدها</h2></div><div class="list">${out.join('')||'<div class="empty">فعلاً هشداری وجود ندارد.</div>'}</div>`}
+
+function v8Calendar(){const events=[];db.projects.forEach(p=>{if(p.delivery)events.push({date:p.delivery,title:'تحویل پروژه',name:p.name})});db.contracts.forEach(c=>{if(c.delivery)events.push({date:c.delivery,title:'سررسید قرارداد',name:c.customer||c.number})});db.receipts.forEach(r=>{if(r.isoDate)events.push({date:r.isoDate,title:'دریافت وجه',name:r.customer||''})});events.sort((a,b)=>a.date.localeCompare(b.date));document.getElementById('view').innerHTML=`<div class="sectionTitle"><h2>📅 تقویم و تاریخ‌های مهم</h2></div><div class="card" style="margin-bottom:12px"><b>امروز: ${new Intl.DateTimeFormat('fa-IR',{dateStyle:'full'}).format(new Date())}</b><div class="muted" style="margin-top:6px">موعدهای پروژه، قرارداد و دریافت‌ها.</div></div><div class="list">${events.map(e=>`<div class="calendarDay"><b>${v8Date(e.date)} — ${v8Text(e.title)}</b><span>${v8Text(e.name)}</span></div>`).join('')||'<div class="empty">تاریخ مهمی ثبت نشده است.</div>'}</div>`}
+
+function reports(){const rec=db.receipts.reduce((a,x)=>a+v8Num(x.amount),0),inv=db.invoices.reduce((a,x)=>a+v8Num(x.total),0),pre=db.preInvoices.reduce((a,x)=>a+v8Num(x.total),0),con=db.contracts.reduce((a,x)=>a+v8Num(x.amount),0);const months={};db.receipts.forEach(r=>{if(r.isoDate){const k=r.isoDate.slice(0,7);months[k]=(months[k]||0)+v8Num(r.amount)}});const vals=Object.values(months),mx=Math.max(...vals,1);const bars=Object.entries(months).sort().slice(-12).map(([k,v])=>`<div class="barRowV8"><span>${v8Date(k+'-01').slice(0,7)}</span><div class="barV8" style="width:${Math.max(3,v/mx*100)}%"></div><b>${money(v)}</b></div>`).join('');document.getElementById('view').innerHTML=`<div class="sectionTitle"><h2>📊 گزارش مدیریتی</h2></div><div class="grid"><div class="card stat">مجموع دریافتی<b>${money(rec)}</b></div><div class="card stat">فاکتور خدمات<b>${money(inv)}</b></div><div class="card stat">پیش‌فاکتورها<b>${money(pre)}</b></div><div class="card stat">قراردادها<b>${money(con)}</b></div></div><div class="card" style="margin-top:12px"><h3 style="margin-top:0">روند دریافتی ماهانه</h3><div class="barChartV8">${bars||'<div class="empty">دریافتی‌ای برای نمودار ثبت نشده است.</div>'}</div></div><div class="card" style="margin-top:12px"><h3 style="margin-top:0">مانده مشتریان</h3><div class="list">${db.customers.map(c=>{const due=db.projects.filter(p=>p.customer===c.name).reduce((a,p)=>a+v8Num(p.amount),0)+db.contracts.filter(x=>x.customer===c.name).reduce((a,x)=>a+v8Num(x.amount),0)-db.receipts.filter(x=>x.customer===c.name).reduce((a,x)=>a+v8Num(x.amount),0);return `<div class="row"><span>${v8Text(c.name)}</span><b>${money(Math.max(due,0))}</b></div>`}).join('')||'<div class="empty">مشتری‌ای ثبت نشده است.</div>'}</div></div>`}
+
+function settings(){document.getElementById('view').innerHTML=`<div class="sectionTitle"><h2>⚙️ تنظیمات و امنیت</h2></div><div class="card"><div class="field"><label>نام برنامه</label><input id="v8_appName" value="${v8Text(db.settings.appName||'Decorative Pro')}"></div><div class="field"><label>نام کسب‌وکار</label><input id="v8_business" value="${v8Text(db.settings.business||'Decorative')}"></div><div class="grid"><div class="field"><label>تم</label><select id="v8_theme"><option value="light">روشن</option><option value="dark">تاریک</option></select></div><div class="field"><label>رنگ اصلی</label><select id="v8_accent"><option value="#5b5cf0">بنفش</option><option value="#2563eb">آبی</option><option value="#059669">سبز</option><option value="#dc2626">قرمز</option><option value="#d97706">نارنجی</option></select></div></div><hr style="border:0;border-top:1px solid var(--line);margin:18px 0"><h3>🔐 امنیت</h3><label style="display:flex;gap:8px;align-items:center"><input id="v8_pinEnabled" type="checkbox" ${db.settings.pinEnabled?'checked':''} style="width:auto"> فعال‌سازی قفل PIN</label><div class="field" style="margin-top:10px"><label>PIN جدید</label><input id="v8_pin" type="password" inputmode="numeric" maxlength="8" placeholder="۴ تا ۸ رقم"></div><div class="muted">PIN فقط روی همین دستگاه ذخیره می‌شود.</div><div class="actions" style="margin-top:14px"><button class="primary" onclick="v8SaveSettings()">ذخیره تنظیمات</button><button class="secondary" onclick="v8LockNow()">🔒 قفل برنامه</button></div></div>`;document.getElementById('v8_theme').value=db.settings.theme||'light';document.getElementById('v8_accent').value=db.settings.accent||'#5b5cf0'}
+function v8SaveSettings(){const pin=document.getElementById('v8_pin').value.trim();if(pin&&!/^\d{4,8}$/.test(pin)){toast('PIN باید ۴ تا ۸ رقم باشد');return}db.settings.appName=(document.getElementById('v8_appName').value||'Decorative Pro').trim();db.settings.business=(document.getElementById('v8_business').value||'Decorative').trim();db.settings.theme=document.getElementById('v8_theme').value;db.settings.accent=document.getElementById('v8_accent').value;db.settings.pinEnabled=document.getElementById('v8_pinEnabled').checked;if(pin)db.settings.pin=pin;save();applyTheme();document.title=db.settings.appName;const brand=document.querySelector('.brand span');if(brand)brand.textContent=db.settings.appName;toast('تنظیمات ذخیره شد')}
+function v8EnsurePinUI(){if(document.getElementById('v8PinOverlay'))return;const d=document.createElement('div');d.id='v8PinOverlay';d.className='pinOverlayV8';d.innerHTML=`<div class="pinBoxV8"><img src="app-icon.svg" width="68" height="68" alt=""><h2>قفل برنامه</h2><p>برای ورود، PIN را وارد کنید.</p><input id="v8PinInput" type="password" inputmode="numeric" maxlength="8" autocomplete="off" placeholder="••••"><div class="formActions" style="justify-content:center;margin-top:15px"><button class="primary" onclick="v8Unlock()">ورود</button></div><div id="v8PinError" style="margin-top:10px;color:#dc2626"></div></div>`;document.body.appendChild(d)}
+function v8LockNow(){if(!db.settings.pinEnabled||!db.settings.pin){toast('ابتدا PIN را فعال کنید');return}v8EnsurePinUI();document.getElementById('v8PinInput').value='';document.getElementById('v8PinError').textContent='';document.getElementById('v8PinOverlay').classList.add('open')}
+function v8Unlock(){const v=document.getElementById('v8PinInput').value;if(v===db.settings.pin){document.getElementById('v8PinOverlay').classList.remove('open');home()}else document.getElementById('v8PinError').textContent='PIN اشتباه است.'}
+function v8Init(){document.title=db.settings.appName||'Decorative Pro';const brand=document.querySelector('.brand span');if(brand)brand.textContent=db.settings.appName||'Decorative Pro';if(db.settings.pinEnabled&&db.settings.pin){v8EnsurePinUI();setTimeout(()=>document.getElementById('v8PinOverlay').classList.add('open'),80)}}
+setTimeout(v8Init,0);
+</script>
+
+<script>
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => navigator.serviceWorker.register("./sw.js").catch(() => {}));
+}
+</script>
+</body>
+</html>
